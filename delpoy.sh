@@ -1,7 +1,7 @@
 # bin/bash
 
 npm run build
-cp CNAME /dist
+cp CNAME ./dist
 git init
 git add .
 git commit -m "development"
