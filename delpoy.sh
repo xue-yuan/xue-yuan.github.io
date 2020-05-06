@@ -13,3 +13,5 @@ git add .
 git commit -m "production"
 git remote add origin https://github.com/xue-yuan/xue-yuan.github.io.git
 git push -u origin master
+
+pwd
