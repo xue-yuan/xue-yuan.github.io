@@ -8,6 +8,7 @@ pwd
 git init
 git add .
 git commit -m "production"
+git remote add origin https://github.com/xue-yuan/xue-yuan.github.io.git
 git push -f https://github.com/xue-yuan/xue-yuan.github.io.git
 # git remote add origin https://github.com/xue-yuan/xue-yuan.github.io.git
 # git push -u origin master
