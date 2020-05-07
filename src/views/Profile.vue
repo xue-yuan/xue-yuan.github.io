@@ -28,13 +28,13 @@
                       </v-btn>
                     </v-col>
                     <v-col cols="auto">
-                      <v-btn min-width="150" color="amber lighten-3" dark to="http://linkedin.com/in/denon9527">
+                      <v-btn min-width="150" color="amber lighten-3" dark to="https://linkedin.com/in/denon9527">
                         LINKEDIN
                         <v-icon dark right>fab fa-linkedin</v-icon>
                       </v-btn>
                     </v-col>
                     <v-col cols="auto">
-                      <v-btn min-width="150" color="green lighten-3" dark to="https://instagram.com/__xueyuan">
+                      <v-btn min-width="150" color="green lighten-3" dark to="https://www.instagram.com/___xueyuan">
                         INSTAGRAM
                         <v-icon dark right>fab fa-instagram</v-icon>
                       </v-btn>
