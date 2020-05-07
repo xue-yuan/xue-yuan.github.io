@@ -13,43 +13,58 @@
       >
         <v-tab :dark="dark">About</v-tab>
         <v-tab :dark="dark">Project</v-tab>
-        <v-tab :dark="dark">Blog</v-tab>
+        <v-tab :dark="dark">Article</v-tab>
           <v-tab-item background-color="primary">
             <v-container :dark="dark">
               <v-card-text :dark="dark">
                 <p class="display-1 teal--text">Denon⚡️</p>
                 <p class="grey--text">I code, therefore I am.</p>
                 <div class="text-center">
-                  <v-btn-toggle
-                    :dark="dark"
-                    borderless
-                    group
-                    class="p-10"
-                  >
-                    <v-btn to="https://github.com/xue-yuan">
-                      <v-icon color="pink lighten-2" x-large>fab fa-github-square</v-icon>
-                    </v-btn>
-                    <v-btn to="https://open.spotify.com/user/uisuell">
-                      <v-icon color="indigo lighten-2" x-large>fab fa-spotify</v-icon>
-                    </v-btn>
-                    <v-btn to="https://instagram.com/__xueyuan">
-                      <v-icon color="green lighten-3" x-large>fab fa-instagram-square</v-icon>
-                    </v-btn>
-                    <v-btn to="mailto://denon@xueyuan.dev">
-                      <v-icon color="amber lighten-3" x-large>fas fa-envelope</v-icon>
-                    </v-btn>
-                    <v-btn to="https://blog.xueyuan.dev">
-                      <v-icon color="red lighten-3" x-large>fas fa-coffee</v-icon>
-                    </v-btn>
-                    <v-btn to="https://medium.com/@denon.d">
-                      <v-icon color="purple lighten-3" x-large>fab fa-medium</v-icon>
-                    </v-btn>
-                    <v-btn to="http://linkedin.com/in/denon9527">
-                      <v-icon color="orange lighten-3" x-large>fab fa-linkedin</v-icon>
-                    </v-btn>
-                  </v-btn-toggle>
+                  <v-row justify="center">
+                    <v-col cols="auto">
+                      <v-btn min-width="150" color="pink lighten-2" dark to="https://github.com/xue-yuan">
+                        GITHUB
+                        <v-icon dark right>fab fa-github</v-icon>
+                      </v-btn>
+                    </v-col>
+                    <v-col cols="auto">
+                      <v-btn min-width="150" color="amber lighten-3" dark to="http://linkedin.com/in/denon9527">
+                        LINKEDIN
+                        <v-icon dark right>fab fa-linkedin</v-icon>
+                      </v-btn>
+                    </v-col>
+                    <v-col cols="auto">
+                      <v-btn min-width="150" color="green lighten-3" dark to="https://instagram.com/__xueyuan">
+                        INSTAGRAM
+                        <v-icon dark right>fab fa-instagram</v-icon>
+                      </v-btn>
+                    </v-col>
+                    <v-col cols="auto">
+                      <v-btn min-width="150" color="indigo lighten-2" dark to="https://open.spotify.com/user/uisuell">
+                        SPOTIFY
+                        <v-icon dark right>fab fa-spotify</v-icon>
+                      </v-btn>
+                    </v-col>
+                    <v-col cols="auto">
+                      <v-btn min-width="150" color="purple lighten-3" dark to="https://medium.com/@denon.d">
+                        MEDIUM
+                        <v-icon dark right>fab fa-medium</v-icon>
+                      </v-btn>
+                    </v-col>
+                    <v-col cols="auto">
+                      <v-btn min-width="150" color="red lighten-3" dark to="https://blog.xueyuan.dev">
+                        BLOG
+                        <v-icon dark right>fas fa-mug-hot</v-icon>
+                      </v-btn>
+                    </v-col>
+                    <v-col cols="auto">
+                      <v-btn min-width="150" color="blue lighten-2" dark to="mailto://denon@xueyuan.dev">
+                        MAIL ME
+                        <v-icon dark right>fas fa-envelope</v-icon>
+                      </v-btn>
+                    </v-col>
+                  </v-row>
                 </div>
-                <!-- <p>{{ dark }}</p> -->
               </v-card-text>
             </v-container>
           </v-tab-item>
