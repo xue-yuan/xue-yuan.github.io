@@ -1,0 +1,57 @@
+{
+    "link": [
+        {
+            "name": "GitHub",
+            "link": "https://github.com/xue-yuan",
+            "icon": "github"
+        },
+        {
+            "name": "LinkedIn",
+            "link": "https://linkedin.com/in/denon9527",
+            "icon": "linkedin"
+        },
+        {
+            "name": "Medium",
+            "link": "https://medium.com/@denon.d",
+            "icon": "medium"
+        },
+        {
+            "name": "Blog",
+            "link": "https://blog.xueyuan.dev",
+            "icon": "blog"
+        },
+        {
+            "name": "Spotify",
+            "link": "https://open.spotify.com/user/uisuell",
+            "icon": "spotify"
+        },
+        {
+            "name": "Instagram",
+            "link": "https://www.instagram.com/___xueyuan/",
+            "icon": "instagram"
+        }
+    ],
+    "projects": [
+        {
+            "name": "Nude York Times",
+            "description": "Bypass New York Times Paywall",
+            "link": "https://github.com/xue-yuan/nude-york-times"
+        },
+        {
+            "name": "Lingram",
+            "description": "A bot to pack Line's sticker to TG",
+            "link": "https://github.com/xue-yuan/lingram"
+        },
+        {
+            "name": "Phorm",
+            "description": "The python package to fill google form",
+            "link": "https://github.com/xue-yuan/phorm"
+        }
+    ],
+    "archives": [
+        {
+            "name": "利用openSSL自簽憑證",
+            "link": "https://medium.com/code-bar/self-signed-certificate-by-using-openssl-ec22a0257a28"
+        }
+    ]
+}
