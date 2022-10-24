@@ -12,4 +12,4 @@ git init
 git add .
 git commit -m "Update: $(date)"
 git branch -M gh-pages
-git push -u git@github.com:xue-yuan/xue-yuan.github.io.git gh-pages
+git push -u -f git@github.com:xue-yuan/xue-yuan.github.io.git gh-pages
