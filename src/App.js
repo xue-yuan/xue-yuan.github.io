@@ -128,7 +128,20 @@ function a11yProps(index) {
 }
 
 function RandomEmoji() {
-  const e = ['🫐', '🧇', '💻', '⛄️', '🌴', '🍉'];
+  const e = [
+    '🫐',
+    '🧇',
+    '💻',
+    '⛄️',
+    '🌴',
+    '🍉',
+    '🍓',
+    '🍕',
+    '🐳',
+    '🦐',
+    '🍣',
+    '🎁',
+  ];
   return e[Math.floor(Math.random() * e.length)];
 }
 
@@ -159,7 +172,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Grid container sx={{ pt: 8 }}>
+        <Grid container sx={{ pt: { xs: 4, md: 10 } }}>
           <Grid
             container
             spacing={5}
@@ -173,7 +186,7 @@ function App() {
                 direction="column"
                 alignItems="center"
                 justifyContent="center"
-                sx={{ pt: 5 }}
+                sx={{ pt: { xs: 3, md: 5 } }}
               >
                 <Grid item>
                   <Avatar src={avatar} sx={{ width: 144, height: 144 }} />
@@ -192,7 +205,10 @@ function App() {
                     Software Engineer
                   </Typography>
                 </Grid>
-                <Divider sx={{ width: 100 }} />
+                <Divider sx={{ width: 100, my: 1 }} />
+                <Typography sx={{ textTransform: 'none', pl: 1 }}>
+                  "I code, therefore I am."
+                </Typography>
                 <Grid item>
                   <Button variant="text" href="mailto:denon@xueyuan.dev">
                     <FontAwesomeIcon icon={faEnvelope} size="lg" />
@@ -215,21 +231,21 @@ function App() {
                   allowScrollButtonsMobile
                 >
                   <Tab
-                    label="Link"
+                    label="⚡️ Link"
                     {...a11yProps(0)}
                     sx={{
                       textTransform: 'none',
                     }}
                   />
                   <Tab
-                    label="Project"
+                    label="📦 Project"
                     {...a11yProps(1)}
                     sx={{
                       textTransform: 'none',
                     }}
                   />
                   <Tab
-                    label="Archive"
+                    label="📚 Archive"
                     {...a11yProps(2)}
                     sx={{
                       textTransform: 'none',
@@ -256,6 +272,28 @@ function App() {
                 >
                   {PROJECTS}
                 </Grid>
+                <Link
+                  href="https://github.com/xue-yuan"
+                  underline="none"
+                  target="_blank"
+                >
+                  <Typography
+                    sx={{
+                      textTransform: 'none',
+                      fontSize: 18,
+                      py: 1,
+                      my: 2,
+                      '&:hover': {
+                        backgroundColor: 'primary.main',
+                        color: 'white',
+                      },
+                      textAlign: 'center',
+                    }}
+                    color="black"
+                  >
+                    See More 🎉
+                  </Typography>
+                </Link>
               </TabPanel>
               <TabPanel value={value} index={2}>
                 <Grid
