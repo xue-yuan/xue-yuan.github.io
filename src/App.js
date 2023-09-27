@@ -10,7 +10,7 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 
-import { indigo } from '@mui/material/colors';
+import { teal } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -21,6 +21,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './App.css';
 import avatar from './avatar.png';
 import db from './db.json';
+import resumePdf from './CV-20230920.pdf';
 
 function IconConv(i) {
   switch (i) {
@@ -131,9 +132,9 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        light: indigo[300],
-        main: indigo[500],
-        dark: indigo[700],
+        light: teal[300],
+        main: teal[500],
+        dark: teal[700],
       },
     },
     typography: {
@@ -173,17 +174,19 @@ function App() {
                 </Grid>
                 <Divider sx={{ width: 100, my: 1 }} />
                 <Typography sx={{ textTransform: 'none', pl: 1 }}>"I code, therefore I am."</Typography>
-                <Grid item>
-                  <Button variant="text" href="mailto:denon@xueyuan.dev">
-                    <FontAwesomeIcon icon={faEnvelope} size="lg" />
-                    <Typography sx={{ textTransform: 'none', pl: 1 }}>denon[at]xueyuan.dev</Typography>
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="text" href="./CV-20230920.pdf">
-                    <FontAwesomeIcon icon={faFile} size="lg" />
-                    <Typography sx={{ textTransform: 'none', pl: 1 }}>denon[at]xueyuan.dev</Typography>
-                  </Button>
+                <Grid container direction="column" alignItems="left" justifyContent="left">
+                  <Grid item>
+                    <Button variant="text" href="mailto:denon@xueyuan.dev">
+                      <FontAwesomeIcon icon={faEnvelope} size="lg" />
+                      <Typography sx={{ textTransform: 'none', pl: 1 }}>denon[at]xueyuan.dev</Typography>
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button variant="text" href={resumePdf}>
+                      <FontAwesomeIcon icon={faFile} size="lg" />
+                      <Typography sx={{ textTransform: 'none', pl: 1 }}>Resume</Typography>
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
