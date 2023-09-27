@@ -10,18 +10,16 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 
-import { teal } from '@mui/material/colors';
+import { pink } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { faCube, faEnvelope, faFile } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark, faCube, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faInstagram, faLinkedin, faSpotify, faMediumM } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './App.css';
-import avatar from './avatar.png';
 import db from './db.json';
-import resumePdf from './CV-20230920.pdf';
 
 function IconConv(i) {
   switch (i) {
@@ -132,9 +130,9 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        light: teal[300],
-        main: teal[500],
-        dark: teal[700],
+        light: pink[300],
+        main: pink[500],
+        dark: pink[700],
       },
     },
     typography: {
@@ -160,11 +158,11 @@ function App() {
                 sx={{ pt: { xs: 3, md: 5 } }}
               >
                 <Grid item>
-                  <Avatar src={avatar} sx={{ width: 144, height: 144 }} />
+                  <Avatar src={process.env.PUBLIC_URL + '/avatar.png'} sx={{ width: 144, height: 144 }} />
                 </Grid>
                 <Grid item>
                   <Typography sx={{ pt: 1 }} color="text.secondary" variant="h5">
-                    Denon
+                    Ares
                   </Typography>
                 </Grid>
                 <Grid item>
@@ -177,13 +175,13 @@ function App() {
                 <Grid container direction="column" alignItems="left" justifyContent="left">
                   <Grid item>
                     <Button variant="text" href="mailto:denon@xueyuan.dev">
-                      <FontAwesomeIcon icon={faEnvelope} size="lg" />
+                      <FontAwesomeIcon icon={faEnvelope} size="lg" fixedWidth />
                       <Typography sx={{ textTransform: 'none', pl: 1 }}>denon[at]xueyuan.dev</Typography>
                     </Button>
                   </Grid>
                   <Grid item>
-                    <Button variant="text" href={resumePdf}>
-                      <FontAwesomeIcon icon={faFile} size="lg" />
+                    <Button variant="text" href={process.env.PUBLIC_URL + '/CV.pdf'}>
+                      <FontAwesomeIcon icon={faBookmark} size="lg" fixedWidth />
                       <Typography sx={{ textTransform: 'none', pl: 1 }}>Resume</Typography>
                     </Button>
                   </Grid>
