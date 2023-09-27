@@ -14,14 +14,8 @@ import { indigo } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { faCube, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import {
-  faGithub,
-  faInstagram,
-  faLinkedin,
-  faSpotify,
-  faMediumM,
-} from '@fortawesome/free-brands-svg-icons';
+import { faCube, faEnvelope, faFile } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faInstagram, faLinkedin, faSpotify, faMediumM } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './App.css';
@@ -56,12 +50,7 @@ const LINKS = db.link.map((e, index) => {
         color="primary"
         sx={{ width: '100%', justifyContent: 'flex-center', p: 0 }}
       >
-        <Link
-          href={e.link}
-          underline="none"
-          target="_blank"
-          sx={{ width: '100%', p: 1 }}
-        >
+        <Link href={e.link} underline="none" target="_blank" sx={{ width: '100%', p: 1 }}>
           <FontAwesomeIcon icon={IconConv(e.icon)} size="xl" />
           <Typography sx={{ textTransform: 'none' }}>{e.name}</Typography>
         </Link>
@@ -128,20 +117,7 @@ function a11yProps(index) {
 }
 
 function RandomEmoji() {
-  const e = [
-    '🫐',
-    '🧇',
-    '💻',
-    '⛄️',
-    '🌴',
-    '🍉',
-    '🍓',
-    '🍕',
-    '🐳',
-    '🦐',
-    '🍣',
-    '🎁',
-  ];
+  const e = ['🫐', '🧇', '💻', '⛄️', '🌴', '🍉', '🍓', '🍕', '🐳', '🦐', '🍣', '🎁'];
   return e[Math.floor(Math.random() * e.length)];
 }
 
@@ -173,13 +149,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <Grid container sx={{ pt: { xs: 4, md: 10 } }}>
-          <Grid
-            container
-            spacing={5}
-            direction="row"
-            justifyContent="center"
-            sx={{ p: 2 }}
-          >
+          <Grid container spacing={5} direction="row" justifyContent="center" sx={{ p: 2 }}>
             <Grid item>
               <Grid
                 container
@@ -192,11 +162,7 @@ function App() {
                   <Avatar src={avatar} sx={{ width: 144, height: 144 }} />
                 </Grid>
                 <Grid item>
-                  <Typography
-                    sx={{ pt: 1 }}
-                    color="text.secondary"
-                    variant="h5"
-                  >
+                  <Typography sx={{ pt: 1 }} color="text.secondary" variant="h5">
                     Denon
                   </Typography>
                 </Grid>
@@ -206,30 +172,24 @@ function App() {
                   </Typography>
                 </Grid>
                 <Divider sx={{ width: 100, my: 1 }} />
-                <Typography sx={{ textTransform: 'none', pl: 1 }}>
-                  "I code, therefore I am."
-                </Typography>
+                <Typography sx={{ textTransform: 'none', pl: 1 }}>"I code, therefore I am."</Typography>
                 <Grid item>
                   <Button variant="text" href="mailto:denon@xueyuan.dev">
                     <FontAwesomeIcon icon={faEnvelope} size="lg" />
-                    <Typography sx={{ textTransform: 'none', pl: 1 }}>
-                      denon@xueyuan.dev
-                    </Typography>
+                    <Typography sx={{ textTransform: 'none', pl: 1 }}>denon[at]xueyuan.dev</Typography>
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button variant="text" href="./CV-20230920.pdf">
+                    <FontAwesomeIcon icon={faFile} size="lg" />
+                    <Typography sx={{ textTransform: 'none', pl: 1 }}>denon[at]xueyuan.dev</Typography>
                   </Button>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item>
-              <Box
-                sx={{ borderBottom: 1, borderColor: 'divider', maxWidth: 500 }}
-              >
-                <Tabs
-                  value={value}
-                  onChange={handleChange}
-                  variant="scrollable"
-                  scrollButtons
-                  allowScrollButtonsMobile
-                >
+              <Box sx={{ borderBottom: 1, borderColor: 'divider', maxWidth: 500 }}>
+                <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons allowScrollButtonsMobile>
                   <Tab
                     label="⚡️ Link"
                     {...a11yProps(0)}
@@ -254,29 +214,15 @@ function App() {
                 </Tabs>
               </Box>
               <TabPanel value={value} index={0}>
-                <Grid
-                  container
-                  spacing={2}
-                  direction="column"
-                  justifyContent="center"
-                >
+                <Grid container spacing={2} direction="column" justifyContent="center">
                   {LINKS}
                 </Grid>
               </TabPanel>
               <TabPanel value={value} index={1}>
-                <Grid
-                  container
-                  spacing={2}
-                  direction="column"
-                  justifyContent="center"
-                >
+                <Grid container spacing={2} direction="column" justifyContent="center">
                   {PROJECTS}
                 </Grid>
-                <Link
-                  href="https://github.com/xue-yuan"
-                  underline="none"
-                  target="_blank"
-                >
+                <Link href="https://github.com/xue-yuan" underline="none" target="_blank">
                   <Typography
                     sx={{
                       textTransform: 'none',
@@ -296,12 +242,7 @@ function App() {
                 </Link>
               </TabPanel>
               <TabPanel value={value} index={2}>
-                <Grid
-                  container
-                  spacing={2}
-                  direction="column"
-                  justifyContent="center"
-                >
+                <Grid container spacing={2} direction="column" justifyContent="center">
                   {ARCHIVES}
                 </Grid>
               </TabPanel>
