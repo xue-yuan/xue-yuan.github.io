@@ -14,11 +14,7 @@ import { pink } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import {
-  faBookmark,
-  faCube,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCube, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
   faInstagram,
