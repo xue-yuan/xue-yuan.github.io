@@ -10,7 +10,7 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import Typography from "@mui/material/Typography";
 
-import { yellow } from "@mui/material/colors";
+import { amber } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -154,9 +154,9 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        light: yellow[700],
-        main: yellow[500],
-        dark: yellow[700],
+        light: amber[800],
+        main: amber[800],
+        dark: amber[800],
       },
     },
     typography: {
