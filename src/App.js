@@ -218,10 +218,10 @@ function App() {
                   justifyContent="left"
                 >
                   <Grid item>
-                    <Button variant="text" href="mailto:denon@xueyuan.dev">
+                    <Button variant="text" href="mailto:ares@xueyuan.dev">
                       <FontAwesomeIcon icon={faEnvelope} size="lg" fixedWidth />
                       <Typography sx={{ textTransform: "none", pl: 1 }}>
-                        denon[at]xueyuan.dev
+                        ares[at]xueyuan.dev
                       </Typography>
                     </Button>
                   </Grid>
