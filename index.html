@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="black">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ares | Software Engineer</title>
+
+    <meta name="description" content="Ares - Software Engineer Portfolio. I code, therefore I am.">
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xue-yuan.github.io/">
+    <meta property="og:title" content="Ares | Software Engineer">
+    <meta property="og:description" content="I code, therefore I am.">
+    <meta property="og:image" content="https://xue-yuan.github.io/assets/og_image.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://xue-yuan.github.io/">
+    <meta property="twitter:title" content="Ares | Software Engineer">
+    <meta property="twitter:description" content="I code, therefore I am.">
+    <meta property="twitter:image" content="https://xue-yuan.github.io/assets/og_image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#050505',
+                        'glass-border': 'rgba(255, 255, 255, 0.08)',
+                        'glass-bg': 'rgba(20, 20, 20, 0.6)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        body {
+            @apply bg-dark text-gray-200 font-sans selection:bg-indigo-500 selection:text-white;
+            overflow-x: hidden;
+        }
+
+        .bg-gradient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+            opacity: 0.4;
+        }
+
+        .orb-1 { width: 50vw; height: 50vw; top: -10%; left: -10%; background: radial-gradient(circle, #4f46e5, transparent 70%); animation-delay: 0s; }
+        .orb-2 { width: 40vw; height: 40vw; bottom: -5%; right: -5%; background: radial-gradient(circle, #0ea5e9, transparent 70%); animation-delay: -5s; }
+        .orb-3 { width: 30vw; height: 30vw; top: 40%; left: 40%; background: radial-gradient(circle, #8b5cf6, transparent 70%); animation-delay: -10s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -50px); }
+            66% { transform: translate(-20px, 20px); }
+        }
+
+        .glass-panel {
+            @apply bg-glass-bg border border-glass-border backdrop-blur-xl transition-all duration-300;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        
+        .glass-panel:hover {
+            @apply border-indigo-500/30 -translate-y-1 shadow-[0_10px_40px_-10px_rgba(79,70,229,0.3)];
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            @apply bg-dark;
+        }
+        ::-webkit-scrollbar-thumb {
+            @apply bg-gray-800 rounded-full hover:bg-gray-700;
+        }
+
+        .custom-tab {
+            position: relative;
+            z-index: 1;
+        }
+        .custom-tab.active {
+            @apply text-white font-medium;
+        }
+        .tab-indicator {
+            @apply absolute bottom-0 left-0 h-full bg-indigo-600 rounded-lg transition-all duration-300 ease-out -z-10 opacity-0;
+        }
+        .active ~ .tab-indicator {
+            opacity: 100;
+        }
+
+        /* Quantum Particles */
+        #quantum-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1; 
+            overflow: hidden;
+        }
+
+        .quantum-particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            animation: quantum-fluctuation 4s infinite ease-in-out;
+        }
+
+        @keyframes quantum-fluctuation {
+            0% { opacity: 0; transform: scale(0) translate(0, 0); }
+            50% { opacity: var(--max-opacity); transform: scale(1) translate(var(--move-x), var(--move-y)); }
+            100% { opacity: 0; transform: scale(0) translate(0, 0); }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen relative">
+
+    <div class="bg-gradient-orb orb-1"></div>
+    <div class="bg-gradient-orb orb-2"></div>
+    <div class="bg-gradient-orb orb-3"></div>
+
+    <div id="quantum-field"></div>
+
+    <section class="min-h-screen flex flex-col justify-center items-center relative px-4 z-10" id="home">
+        <div class="text-center z-10 max-w-2xl mx-auto">
+
+            <div class="mb-10 relative inline-block animate__animated animate__fadeInDown">
+                <div
+                    class="w-40 h-40 rounded-full p-1 bg-gradient-to-br from-indigo-500 via-purple-500 to-cyan-500 shadow-2xl">
+                    <div class="w-full h-full rounded-full overflow-hidden bg-black relative">
+                        <img src="./assets/avatar.jpeg" alt="Ares" class="w-full h-full object-cover"
+                            onerror="this.src='https://api.dicebear.com/7.x/notionists/svg?seed=Ares&backgroundColor=1e1e1e'" />
+                    </div>
+                </div>
+            </div>
+
+            <h1
+                class="text-6xl md:text-7xl font-bold mb-4 tracking-tight animate__animated animate__fadeInUp animate__delay-1s bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-gray-400">
+                Ares
+            </h1>
+
+            <div
+                class="flex items-center justify-center gap-3 text-xl md:text-2xl text-gray-400 mb-8 font-light animate__animated animate__fadeInUp animate__delay-1s">
+                <span>Software Engineer</span>
+                <span class="text-indigo-500">•</span>
+                <span>DJ</span>
+            </div>
+
+            <p class="text-lg text-gray-500 italic mb-12 animate__animated animate__fadeInUp animate__delay-1s">
+                "I code, therefore I am."
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-6 animate__animated animate__fadeInUp animate__delay-2s">
+                <a href="https://github.com/xue-yuan" target="_blank"
+                    class="text-3xl text-gray-400 hover:text-white hover:scale-110 transition-all duration-300"
+                    title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/denon9527" target="_blank"
+                    class="text-3xl text-gray-400 hover:text-[#0077b5] hover:scale-110 transition-all duration-300"
+                    title="LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://blog.xueyuan.dev" target="_blank"
+                    class="text-3xl text-gray-400 hover:text-orange-400 hover:scale-110 transition-all duration-300"
+                    title="Blog">
+                    <i class="fa-solid fa-cube"></i>
+                </a>
+                <a href="https://open.spotify.com/user/uisuell" target="_blank"
+                    class="text-3xl text-gray-400 hover:text-[#1DB954] hover:scale-110 transition-all duration-300"
+                    title="Spotify">
+                    <i class="fa-brands fa-spotify"></i>
+                </a>
+                <a href="https://www.instagram.com/___xueyuan/" target="_blank"
+                    class="text-3xl text-gray-400 hover:text-[#E1306C] hover:scale-110 transition-all duration-300"
+                    title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="mailto:ares@xueyuan.dev"
+                    class="text-3xl text-gray-400 hover:text-indigo-400 hover:scale-110 transition-all duration-300"
+                    title="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-500 cursor-pointer hover:text-white transition-colors duration-300"
+            onclick="document.getElementById('content').scrollIntoView({behavior: 'smooth'})">
+            <i class="fa-solid fa-chevron-down text-xl"></i>
+        </div>
+    </section>
+
+    <main id="content" class="container mx-auto px-4 py-20 min-h-screen relative z-10">
+
+        <div class="flex justify-center mb-16 animate__animated animate__fadeIn" id="tabs-container">
+            <div class="bg-white/5 p-1 rounded-xl inline-flex relative backdrop-blur-md">
+                <button
+                    class="custom-tab active px-8 py-2 rounded-lg text-sm md:text-base transition-colors duration-200"
+                    onclick="switchTab(this, 'projects')">
+                    Projects
+                </button>
+                <button
+                    class="custom-tab px-8 py-2 rounded-lg text-sm md:text-base text-gray-400 hover:text-gray-200 transition-colors duration-200"
+                    onclick="switchTab(this, 'music')">
+                    Music
+                </button>
+                <button
+                    class="custom-tab px-8 py-2 rounded-lg text-sm md:text-base text-gray-400 hover:text-gray-200 transition-colors duration-200"
+                    onclick="switchTab(this, 'archives')">
+                    Archives
+                </button>
+            </div>
+        </div>
+
+        <div id="projects" class="animate__animated animate__fadeIn">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <h3 class="font-bold text-xl group-hover:text-indigo-400 transition-colors">Okareer</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                        AI Reports For Smarter Career Decisions. Get insights into your professional path.
+                    </p>
+                    <div class="flex justify-end">
+                        <a href="https://okareer.com" target="_blank"
+                            class="text-sm font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-2 transition-colors">
+                            Visit Website <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-music"></i>
+                        </div>
+                        <h3 class="font-bold text-xl group-hover:text-cyan-400 transition-colors">Lofi Radio</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                        Your personal focus companion. Listen to curated Lofi beats to relax or code.
+                    </p>
+                    <div class="flex justify-end">
+                        <a href="https://lofi.tw" target="_blank"
+                            class="text-sm font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-2 transition-colors">
+                            Start Listening <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <h3 class="font-bold text-xl group-hover:text-green-400 transition-colors">Kirin</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                        Simple yet powerful Compound Interest Calculator for financial planning.
+                    </p>
+                    <div class="flex justify-end">
+                        <a href="https://kirin.xueyuan.dev" target="_blank"
+                            class="text-sm font-semibold text-green-400 hover:text-green-300 flex items-center gap-2 transition-colors">
+                            Calculate <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-gray-500/10 text-gray-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-newspaper"></i>
+                        </div>
+                        <h3 class="font-bold text-xl group-hover:text-white transition-colors">Nude York Times</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                        Browser extension to bypass paywalls and access news content freely.
+                    </p>
+                    <div class="flex justify-end">
+                        <a href="https://github.com/xue-yuan/nude-york-times" target="_blank"
+                            class="text-sm font-semibold text-gray-400 hover:text-white flex items-center gap-2 transition-colors">
+                            View Code <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-brands fa-telegram"></i>
+                        </div>
+                        <h3 class="font-bold text-xl group-hover:text-blue-400 transition-colors">Lingram</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                        Utility to transfer stickers from LINE to Telegram seamlessly.
+                    </p>
+                    <div class="flex justify-end">
+                        <a href="https://github.com/xue-yuan/lingram" target="_blank"
+                            class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-2 transition-colors">
+                            View Code <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+                        <h3 class="font-bold text-xl group-hover:text-yellow-400 transition-colors">Phorm</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                        Automation script to fill Google Forms automatically.
+                    </p>
+                    <div class="flex justify-end">
+                        <a href="https://github.com/xue-yuan/phorm" target="_blank"
+                            class="text-sm font-semibold text-yellow-400 hover:text-yellow-300 flex items-center gap-2 transition-colors">
+                            View Code <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://github.com/xue-yuan" target="_blank"
+                    class="inline-block px-6 py-3 rounded-full border border-gray-700 hover:border-indigo-500 text-gray-400 hover:text-white transition-all duration-300">
+                    See More on GitHub <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                </a>
+            </div>
+        </div>
+
+        <div id="music" class="hidden animate__animated animate__fadeIn">
+            <div class="max-w-3xl mx-auto glass-panel p-1 rounded-xl overflow-hidden">
+                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+                    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ares-138069229/tech-house-and-bass-house-mix-vol-1&color=%234f46e5&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                </iframe>
+            </div>
+        </div>
+
+        <div id="archives" class="hidden flex flex-col gap-4 max-w-4xl mx-auto animate__animated animate__fadeIn">
+
+            <a href="https://medium.com/code-bar/self-signed-certificate-by-using-openssl-ec22a0257a28" target="_blank"
+                class="glass-panel p-6 rounded-xl flex items-center justify-between group cursor-pointer">
+                <div>
+                    <h2 class="text-lg font-semibold group-hover:text-indigo-400 transition-colors">利用 openSSL 自簽憑證</h2>
+                    <p class="text-sm text-gray-500 mt-1">Medium Article • Technical Guide</p>
+                </div>
+                <div
+                    class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-indigo-500 group-hover:text-white transition-all">
+                    <i class="fa-solid fa-arrow-right -rotate-45"></i>
+                </div>
+            </a>
+
+
+        </div>
+
+    </main>
+
+    <footer class="py-8 text-center text-gray-600 text-sm">
+        <p>&copy; 2025 Ares. All rights reserved.</p>
+    </footer>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5VV6WM91B9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-5VV6WM91B9');
+    </script>
+
+    <script>
+        function switchTab(element, tabName) {
+            const buttons = document.querySelectorAll('.custom-tab');
+            buttons.forEach(btn => {
+                btn.classList.remove('active', 'bg-indigo-600', 'text-white', 'shadow-lg');
+                btn.classList.add('text-gray-400', 'hover:text-gray-200');
+            });
+
+            element.classList.remove('text-gray-400', 'hover:text-gray-200');
+            element.classList.add('active', 'bg-indigo-600', 'text-white', 'shadow-lg');
+
+            const sections = ['projects', 'music', 'archives'];
+            sections.forEach(section => {
+                const el = document.getElementById(section);
+                if (section === tabName) {
+                    el.classList.remove('hidden');
+                    el.classList.add('animate__fadeIn');
+                } else {
+                    el.classList.add('hidden');
+                    el.classList.remove('animate__fadeIn');
+                }
+            });
+        }
+
+        document.querySelector('.custom-tab.active')?.classList.add('bg-indigo-600', 'text-white', 'shadow-lg');
+
+        // Generate Quantum Particles
+        function initQuantumField() {
+            const container = document.getElementById('quantum-field');
+            const particleCount = 80; // Increased count for visibility
+
+            for (let i = 0; i < particleCount; i++) {
+                createParticle(container);
+            }
+        }
+
+        function createParticle(container) {
+            const particle = document.createElement('div');
+            particle.classList.add('quantum-particle');
+
+            // Random properties
+            const size = Math.random() * 3 + 2; // 2px to 5px (Increased)
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 3 + 3; // 3s to 6s
+            const maxOpacity = Math.random() * 0.5 + 0.3; // 0.3 to 0.8 max opacity (Increased)
+            const moveX = (Math.random() - 0.5) * 20 + 'px';
+            const moveY = (Math.random() - 0.5) * 20 + 'px';
+
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${x}%`;
+            particle.style.top = `${y}%`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.setProperty('--max-opacity', maxOpacity);
+            particle.style.setProperty('--move-x', moveX);
+            particle.style.setProperty('--move-y', moveY);
+
+            // Optional: Color variation (White, slight Cyan, slight Purple)
+            const colors = ['#ffffff', '#a5f3fc', '#e9d5ff'];
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+            container.appendChild(particle);
+        }
+
+        initQuantumField();
+
+        // Easter Egg: Konami Code
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    triggerSurprise();
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        function triggerSurprise() {
+            // Toast Notification
+            const container = document.createElement('div');
+            container.className = 'fixed bottom-10 left-0 right-0 flex justify-center z-[100] pointer-events-none';
+
+            const toast = document.createElement('div');
+            toast.className = 'bg-indigo-600 text-white px-6 py-3 rounded-full shadow-2xl animate__animated animate__bounceInUp font-bold pointer-events-auto';
+            toast.innerText = '🚀 Cheat Code Activated! Party Time! 🎉';
+
+            container.appendChild(toast);
+            document.body.appendChild(container);
+
+            setTimeout(() => {
+                toast.classList.remove('animate__bounceInUp');
+                toast.classList.add('animate__fadeOutDown');
+                setTimeout(() => container.remove(), 1000);
+            }, 3000);
+
+            // Confetti Explosion
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 100 };
+
+            function random(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function () {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                // since particles fall down, start a bit higher than random
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+    </script>
+</body>
+
+</html>
