@@ -1,660 +1,1180 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="black">
+<html lang="en" data-theme="dev">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ares | Software Engineer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ares | Software Engineer & DJ</title>
 
-    <meta name="description" content="Ares - Software Engineer Portfolio. I code, therefore I am.">
-    <link rel="icon" type="image/png" href="./assets/favicon.png">
+  <meta name="description" content="Ares - Software Engineer & DJ Portfolio. Mixing code & tracks.">
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://xue-yuan.github.io/">
-    <meta property="og:title" content="Ares | Software Engineer">
-    <meta property="og:description" content="I code, therefore I am.">
-    <meta property="og:image" content="https://xue-yuan.github.io/assets/og_image.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xue-yuan.github.io/">
+  <meta property="og:title" content="Ares | Software Engineer & DJ">
+  <meta property="og:description" content="Software Engineer & DJ. Mixing code & tracks.">
+  <meta property="og:image" content="https://xue-yuan.github.io/assets/og_image.png">
 
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://xue-yuan.github.io/">
-    <meta property="twitter:title" content="Ares | Software Engineer">
-    <meta property="twitter:description" content="I code, therefore I am.">
-    <meta property="twitter:image" content="https://xue-yuan.github.io/assets/og_image.png">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://xue-yuan.github.io/">
+  <meta property="twitter:title" content="Ares | Software Engineer & DJ">
+  <meta property="twitter:description" content="Software Engineer & DJ. Mixing code & tracks.">
+  <meta property="twitter:image" content="https://xue-yuan.github.io/assets/og_image.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Text Content Data Configuration Source -->
+  <script src="./assets/data.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- Tailwind & DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="./assets/style.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        dark: '#050505',
-                        'glass-border': 'rgba(255, 255, 255, 0.08)',
-                        'glass-bg': 'rgba(20, 20, 20, 0.6)',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style type="text/tailwindcss">
-        body {
-            @apply bg-dark text-gray-200 font-sans selection:bg-indigo-500 selection:text-white;
-            overflow-x: hidden;
-        }
-
-        .bg-gradient-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            animation: float 20s infinite ease-in-out;
-            opacity: 0.4;
-        }
-
-        .orb-1 { width: 50vw; height: 50vw; top: -10%; left: -10%; background: radial-gradient(circle, #4f46e5, transparent 70%); animation-delay: 0s; }
-        .orb-2 { width: 40vw; height: 40vw; bottom: -5%; right: -5%; background: radial-gradient(circle, #0ea5e9, transparent 70%); animation-delay: -5s; }
-        .orb-3 { width: 30vw; height: 30vw; top: 40%; left: 40%; background: radial-gradient(circle, #8b5cf6, transparent 70%); animation-delay: -10s; }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            33% { transform: translate(30px, -50px); }
-            66% { transform: translate(-20px, 20px); }
-        }
-
-        .glass-panel {
-            @apply bg-glass-bg border border-glass-border backdrop-blur-xl transition-all duration-300;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-        }
-        
-        .glass-panel:hover {
-            @apply border-indigo-500/30 -translate-y-1 shadow-[0_10px_40px_-10px_rgba(79,70,229,0.3)];
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            @apply bg-dark;
-        }
-        ::-webkit-scrollbar-thumb {
-            @apply bg-gray-800 rounded-full hover:bg-gray-700;
-        }
-
-        .custom-tab {
-            position: relative;
-            z-index: 1;
-        }
-        .custom-tab.active {
-            @apply text-white font-medium;
-        }
-        .tab-indicator {
-            @apply absolute bottom-0 left-0 h-full bg-indigo-600 rounded-lg transition-all duration-300 ease-out -z-10 opacity-0;
-        }
-        .active ~ .tab-indicator {
-            opacity: 100;
-        }
-
-        #quantum-field {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1; 
-            overflow: hidden;
-        }
-
-        .quantum-particle {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-            animation: quantum-fluctuation 4s infinite ease-in-out;
-        }
-
-        @keyframes quantum-fluctuation {
-            0% { opacity: 0; transform: scale(0) translate(0, 0); }
-            50% { opacity: var(--max-opacity); transform: scale(1) translate(var(--move-x), var(--move-y)); }
-            100% { opacity: 0; transform: scale(0) translate(0, 0); }
-        }
-
-        #terminal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(10, 10, 10, 0.95);
-            color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 2rem;
-            z-index: 9999;
-            transform: translateY(-100%);
-            transition: transform 0.3s ease-in-out;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        #terminal-overlay.open {
-            transform: translateY(0);
-        }
-
-        .terminal-line { margin-bottom: 0.5rem; }
-        .terminal-input-line { display: flex; align-items: center; }
-        .prompt { margin-right: 0.5rem; color: #00ff00; }
-        #terminal-input {
-            background: transparent;
-            border: none;
-            color: #00ff00;
-            font-family: inherit;
-            font-size: inherit;
-            flex-grow: 1;
-            outline: none;
-        }
-
-
-    </style>
+  <!-- FontAwesome & Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://w.soundcloud.com/player/api.js"></script>
 </head>
 
-<body class="min-h-screen relative">
+<body class="min-h-screen relative pb-16">
 
-    <div class="bg-gradient-orb orb-1"></div>
-    <div class="bg-gradient-orb orb-2"></div>
-    <div class="bg-gradient-orb orb-3"></div>
+  <!-- Particle Field Canvas background -->
+  <canvas id="quantum-canvas" class="fixed inset-0 -z-20 pointer-events-none"></canvas>
 
-    <div id="quantum-field"></div>
-
-    <div id="terminal-overlay">
-        <div id="terminal-output">
-            <div class="terminal-line">Welcome to AresOS v1.0.0</div>
-            <div class="terminal-line">Type 'help' for available commands.</div>
-        </div>
-        <div class="terminal-input-line">
-            <span class="prompt">ares@system:~$</span>
-            <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
-        </div>
+  <!-- Top floating Blur Nav Header -->
+  <header id="floating-header"
+    class="fixed top-4 left-1/2 transform -translate-x-1/2 w-[90%] max-w-4xl z-50 transition-all duration-500 opacity-0 translate-y-[-20px] pointer-events-none">
+    <div
+      class="bg-black/60 border border-zinc-800/80 backdrop-blur-xl rounded-2xl py-3 px-6 flex items-center justify-between shadow-2xl">
+      <a href="#" class="font-display font-bold text-lg tracking-wider text-white">ARES<span
+          class="text-accent-1">.DEV</span></a>
+      <nav class="flex items-center gap-6 text-sm font-medium">
+        <button onclick="scrollToCard('profile-card')"
+          class="text-gray-400 hover:text-white transition-colors">About</button>
+        <button onclick="scrollToCard('console-card')"
+          class="text-gray-400 hover:text-white transition-colors">Turntable</button>
+        <button onclick="scrollToCard('projects-card')"
+          class="text-gray-400 hover:text-white transition-colors">Projects</button>
+        <button onclick="scrollToCard('archives-card')"
+          class="text-gray-400 hover:text-white transition-colors">Archives</button>
+      </nav>
     </div>
+  </header>
 
-    <section class="min-h-screen flex flex-col justify-center items-center relative px-4 z-10" id="home">
-        <div class="text-center z-10 max-w-2xl mx-auto">
+  <!-- Scroll Progress Bar -->
+  <div class="fixed top-0 left-0 w-full h-[3px] bg-zinc-900 z-50">
+    <div id="scroll-progress" class="h-full w-0 bg-gradient-to-r from-accent-1 to-accent-2 transition-all duration-75">
+    </div>
+  </div>
 
-            <div class="mb-10 relative inline-block animate__animated animate__fadeInDown group">
-                <div
-                    class="w-40 h-40 rounded-full p-1 bg-gradient-to-br from-indigo-500 via-purple-500 to-cyan-500 shadow-2xl">
-                    <div class="w-full h-full rounded-full overflow-hidden bg-black relative">
-                        <img src="./assets/avatar.jpeg" alt="Ares" class="w-full h-full object-cover"
-                            onerror="this.src='https://api.dicebear.com/7.x/notionists/svg?seed=Ares&backgroundColor=1e1e1e'" />
-                    </div>
-                </div>
-            </div>
+  <!-- Main Container -->
+  <main class="container mx-auto px-4 pt-10 max-w-7xl relative z-10 flex flex-col gap-6">
 
-            <h1
-                class="text-6xl md:text-7xl font-bold mb-4 tracking-tight animate__animated animate__fadeInUp animate__delay-1s bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-gray-400">
-                Ares
-            </h1>
+    <!-- Grid Dashboard -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-auto">
 
+      <!-- Card 1: Profile Block (lg: 2x2) -->
+      <div id="profile-card"
+        class="bento-card lg:col-span-2 lg:row-span-2 p-6 md:p-8 flex flex-col justify-between gap-6">
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+          <!-- Static Bento Avatar -->
+          <div class="relative w-28 h-28 flex-shrink-0">
             <div
-                class="flex items-center justify-center gap-3 text-xl md:text-2xl text-gray-400 mb-8 font-light animate__animated animate__fadeInUp animate__delay-1s">
-                <span>Software Engineer</span>
-                <span class="text-indigo-500">•</span>
-                <span>DJ</span>
+              class="w-full h-full rounded-2xl overflow-hidden bg-zinc-900 border-2 border-zinc-800/50 shadow-xl transition-all hover:scale-105 duration-300 hover:border-accent-2">
+              <img src="./assets/avatar.jpeg" alt="Ares" class="w-full h-full object-cover"
+                onerror="this.src='https://api.dicebear.com/7.x/notionists/svg?seed=Ares&backgroundColor=1e1e1e'" />
             </div>
+          </div>
+          <!-- Intro Text -->
+          <div class="text-center md:text-left flex-grow">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-1/10 border border-accent-1/20 text-xs font-mono text-accent-1 mb-3">
+              <span class="w-2 h-2 rounded-full bg-accent-1 animate-pulse"></span>
+              <span id="live-status">WORKSPACE: DEVELOPER</span>
+            </div>
+            <h1 id="profile-name" class="font-display font-bold text-4xl md:text-5xl tracking-tight text-white mb-2">-
+            </h1>
+            <p id="profile-title" class="font-display font-medium text-lg text-accent-2 transition-colors duration-500">
+              -</p>
+          </div>
+        </div>
 
-            <p class="text-lg text-gray-500 italic mb-12 animate__animated animate__fadeInUp animate__delay-1s">
-                "I code, therefore I am."
+        <div class="my-2 border-t border-zinc-800/50 pt-4">
+          <p id="profile-bio" class="text-sm md:text-base leading-relaxed text-gray-400">-</p>
+          <p id="profile-quote" class="text-sm italic text-gray-500 mt-3">-</p>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex flex-wrap justify-between items-center gap-4 border-t border-zinc-800/50 pt-4">
+          <div class="flex gap-4">
+            <a id="link-github" href="#" target="_blank"
+              class="text-2xl text-gray-500 hover:text-white transition-colors" title="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a id="link-linkedin" href="#" target="_blank"
+              class="text-2xl text-gray-500 hover:text-[#0077b5] transition-colors" title="LinkedIn">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a id="link-blog" href="#" target="_blank"
+              class="text-2xl text-gray-500 hover:text-orange-400 transition-colors" title="Blog">
+              <i class="fa-solid fa-cube"></i>
+            </a>
+            <a id="link-spotify" href="#" target="_blank"
+              class="text-2xl text-gray-500 hover:text-[#1DB954] transition-colors" title="Spotify">
+              <i class="fa-brands fa-spotify"></i>
+            </a>
+            <a id="link-instagram" href="#" target="_blank"
+              class="text-2xl text-gray-500 hover:text-[#E1306C] transition-colors" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+          <a id="link-email" href="#"
+            class="flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-accent-1 transition-colors">
+            <i class="fa-solid fa-envelope"></i> -
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Mode Selector Block (lg: 2x1) -->
+      <div class="bento-card lg:col-span-2 p-6 flex flex-col justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white mb-1">SELECT MODE</h3>
+          <!-- <p class="text-xs text-gray-500">Morphes website workspace themes, color schemes, and layout priorities.</p> -->
+        </div>
+        <!-- Dual Switch Button Container -->
+        <div class="grid grid-cols-2 p-1.5 bg-black/40 border border-zinc-800 rounded-xl">
+          <button onclick="setThemeState('dev')" id="btn-theme-dev"
+            class="flex items-center justify-center gap-2 py-2 px-4 rounded-lg font-display text-sm font-semibold transition-all duration-300 bg-indigo-600 text-white shadow-lg shadow-indigo-600/20">
+            <i class="fa-solid fa-code text-xs"></i> DEV_MODE
+          </button>
+          <button onclick="setThemeState('dj')" id="btn-theme-dj"
+            class="flex items-center justify-center gap-2 py-2 px-4 rounded-lg font-display text-sm font-semibold transition-all duration-300 text-gray-400 hover:text-white">
+            <i class="fa-solid fa-compact-disc text-xs animate-[spin_4s_linear_infinite]"></i> DJ_MODE
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 4: Web Audio Synth Pads (lg: 2x1) -->
+      <div class="bento-card lg:col-span-2 p-6 flex flex-col justify-between gap-4">
+        <div class="flex justify-between items-center">
+          <div>
+            <h3 class="font-display font-bold text-lg text-white mb-0.5">SYNTHESIZER PADS</h3>
+            <!-- <p class="text-xs text-gray-500">Web Audio synth kit. Press [1] [2] [3] [4] keys.</p> -->
+          </div>
+          <i class="fa-solid fa-wave-square text-accent-1 transition-colors duration-500"></i>
+        </div>
+        <!-- Synthesizer buttons -->
+        <div class="grid grid-cols-4 gap-2">
+          <button onclick="triggerPad('kick')" id="pad-kick"
+            class="relative py-4 rounded-xl border border-zinc-800/80 bg-black/20 overflow-hidden flex flex-col items-center justify-between h-20 transition-all hover:scale-[1.04] active:scale-[0.96]">
+            <span class="text-[9px] text-gray-500 font-mono">[1]</span>
+            <span class="text-xs font-bold tracking-wider text-white">KICK</span>
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-cyan-500 scale-x-0 transition-transform origin-left">
+            </div>
+          </button>
+          <button onclick="triggerPad('snare')" id="pad-snare"
+            class="relative py-4 rounded-xl border border-zinc-800/80 bg-black/20 overflow-hidden flex flex-col items-center justify-between h-20 transition-all hover:scale-[1.04] active:scale-[0.96]">
+            <span class="text-[9px] text-gray-500 font-mono">[2]</span>
+            <span class="text-xs font-bold tracking-wider text-white">SNARE</span>
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-pink-500 scale-x-0 transition-transform origin-left">
+            </div>
+          </button>
+          <button onclick="triggerPad('hihat')" id="pad-hihat"
+            class="relative py-4 rounded-xl border border-zinc-800/80 bg-black/20 overflow-hidden flex flex-col items-center justify-between h-20 transition-all hover:scale-[1.04] active:scale-[0.96]">
+            <span class="text-[9px] text-gray-500 font-mono">[3]</span>
+            <span class="text-xs font-bold tracking-wider text-white">HI-HAT</span>
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-yellow-500 scale-x-0 transition-transform origin-left">
+            </div>
+          </button>
+          <button onclick="triggerPad('synth')" id="pad-synth"
+            class="relative py-4 rounded-xl border border-zinc-800/80 bg-black/20 overflow-hidden flex flex-col items-center justify-between h-20 transition-all hover:scale-[1.04] active:scale-[0.96]">
+            <span class="text-[9px] text-gray-500 font-mono">[4]</span>
+            <span class="text-xs font-bold tracking-wider text-white">SYNTH</span>
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-emerald-500 scale-x-0 transition-transform origin-left">
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 3: DJ Console Turntable (lg: 2x2) -->
+      <div id="console-card" class="bento-card lg:col-span-2 lg:row-span-2 p-6 flex flex-col justify-between gap-6">
+        <div class="flex justify-between items-center border-b border-zinc-800/50 pb-3">
+          <h3 class="font-display font-bold text-lg text-white">DJ MIX PLATTER</h3>
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+            <span class="text-[10px] font-mono text-gray-400">DJ.TW MIX</span>
+          </div>
+        </div>
+
+        <!-- Turntable SVG Visuals -->
+        <div
+          class="relative w-48 h-48 mx-auto flex items-center justify-center bg-zinc-900 rounded-full border-[6px] border-zinc-800 shadow-2xl relative">
+          <!-- Vinyl record body -->
+          <div id="vinyl-record" onclick="togglePlayMix()"
+            class="w-[170px] h-[170px] rounded-full bg-zinc-950 flex items-center justify-center relative cursor-pointer shadow-inner z-10 transition-transform duration-75">
+            <!-- Grooves -->
+            <div class="absolute inset-4 rounded-full border border-zinc-900/60 pointer-events-none"></div>
+            <div class="absolute inset-8 rounded-full border border-zinc-800/40 pointer-events-none"></div>
+            <div class="absolute inset-12 rounded-full border border-zinc-900/60 pointer-events-none"></div>
+            <div class="absolute inset-16 rounded-full border border-zinc-800/40 pointer-events-none"></div>
+            <div class="absolute inset-20 rounded-full border border-zinc-900/60 pointer-events-none"></div>
+            <!-- Center Label -->
+            <div
+              class="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center border-2 border-zinc-900 z-10 transition-colors duration-500"
+              id="vinyl-center">
+              <div class="w-2.5 h-2.5 rounded-full bg-black"></div>
+            </div>
+          </div>
+          <!-- Tonearm -->
+          <div id="tonearm"
+            class="absolute top-[-5px] right-[-5px] w-24 h-24 pointer-events-none transition-transform duration-700 ease-in-out origin-[75px_15px] z-20 rotate-[-22deg]">
+            <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="75" cy="15" r="9" fill="#27272a" stroke="#3f3f46" stroke-width="2" />
+              <circle cx="75" cy="15" r="3" fill="#a1a1aa" />
+              <path d="M75 15 L44 72 L20 72" stroke="#d4d4d8" stroke-width="3.5" stroke-linecap="round" />
+              <rect x="10" y="66" width="14" height="11" rx="2" fill="#e4e4e7" stroke="#27272a" stroke-width="1.5" />
+              <rect x="6" y="70" width="4" height="2" fill="#ff0055" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Custom audio controls -->
+        <div class="flex flex-col gap-4">
+          <!-- Play button -->
+          <button onclick="togglePlayMix()" id="btn-play-mix"
+            class="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-zinc-800 bg-black/40 hover:bg-zinc-800/30 text-white font-mono text-sm font-semibold transition-all">
+            <i class="fa-solid fa-play"></i> START PLAYBACK
+          </button>
+          <!-- Iframe widget SoundCloud (styled and small) -->
+          <div class="h-[120px] rounded-xl overflow-hidden border border-zinc-900 bg-black/80">
+            <iframe id="sc-widget" width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay"
+              src=""></iframe>
+          </div>
+
+          <!-- Equalizer bouncing bars -->
+          <div id="visualizer-container"
+            class="flex items-end justify-center gap-1.5 h-10 w-full px-4 pt-2 border-t border-zinc-800/40">
+            <div
+              class="eq-bar w-1.5 bg-accent-1 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-1 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-1 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-1 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-1 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-1 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-1 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-1 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-2 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-2 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-2 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-2 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-2 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-2 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-2 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+            <div
+              class="eq-bar w-1.5 bg-accent-2 h-6 rounded-t-sm origin-bottom transition-transform duration-100 scale-y-[0.15]">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Embedded Retro Terminal (lg: 2x2) -->
+      <div id="terminal-card"
+        class="bento-card lg:col-span-2 lg:row-span-2 bg-[#050505] p-5 flex flex-col justify-between gap-4 font-mono crt-scanlines border border-zinc-800">
+        <!-- Terminal Header -->
+        <div class="flex items-center justify-between border-b border-zinc-900 pb-2 text-[11px] text-zinc-500">
+          <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+            <span class="ml-2 font-semibold">ares@systemOS: ~</span>
+          </div>
+          <span class="text-[9px] bg-zinc-900 px-2 py-0.5 rounded text-zinc-600">v2.0.0</span>
+        </div>
+
+        <!-- Matrix Code Rain Canvas (hidden by default) -->
+        <canvas id="matrix-canvas" class="absolute inset-0 z-40 hidden cursor-pointer bg-black"></canvas>
+
+        <!-- Console Output Log -->
+        <div id="terminal-output"
+          class="flex-grow text-xs leading-relaxed text-green-400 overflow-y-auto max-h-[220px] pr-1 terminal-glow">
+          <div>Welcome to AresOS v2.0.0 Terminal.</div>
+          <div>Type <span class="text-white font-semibold">'help'</span> for instructions list.</div>
+          <div class="text-zinc-600">-----------------------------------------</div>
+        </div>
+
+        <!-- Console Input Field -->
+        <div class="flex items-center text-xs gap-1 border-t border-zinc-900 pt-3">
+          <span class="text-indigo-400 font-bold font-mono">ares@system:~$</span>
+          <input type="text" id="terminal-input" autocomplete="off" spellcheck="false"
+            class="bg-transparent border-none outline-none flex-grow text-green-400 placeholder-zinc-800"
+            placeholder="...">
+        </div>
+      </div>
+
+      <!-- Card 6: Tech & DJ Gear Stack (lg: 2x1) -->
+      <div class="bento-card lg:col-span-2 p-6 flex flex-col justify-between gap-4">
+        <div class="flex justify-between items-center border-b border-zinc-800/50 pb-2">
+          <h3 class="font-display font-bold text-lg text-white" id="stack-card-title">TECH STACK</h3>
+          <button onclick="toggleStackView()" id="btn-toggle-stack"
+            class="text-xs font-mono px-2 py-1 rounded bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 text-accent-1 transition-colors">
+            SWITCH TO GEARS
+          </button>
+        </div>
+
+        <!-- Tech list (Dev Mode default) -->
+        <div id="stack-dev" class="flex flex-wrap gap-2 transition-all"></div>
+
+        <!-- Gear list (DJ Mode default, hidden on start) -->
+        <div id="stack-dj" class="hidden flex flex-wrap gap-2 transition-all"></div>
+      </div>
+
+      <!-- Card 8: Writing Archives (lg: 2x1) -->
+      <div id="archives-card" class="bento-card lg:col-span-2 p-6 flex flex-col justify-between gap-4">
+        <div class="flex justify-between items-center border-b border-zinc-800/50 pb-2">
+          <h3 class="font-display font-bold text-lg text-white">WRITINGS & BLOG</h3>
+          <i class="fa-solid fa-pen-nib text-accent-2 transition-colors duration-500"></i>
+        </div>
+
+        <!-- Articles list (populated dynamically) -->
+        <div class="flex flex-col gap-3" id="writings-list"></div>
+      </div>
+
+      <!-- Card 7: Large Projects Showcase Bento (lg: 4x2) -->
+      <div id="projects-card" class="bento-card lg:col-span-4 p-6 md:p-8 flex flex-col gap-6 reveal-item">
+        <div
+          class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-zinc-800/50 pb-4">
+          <div>
+            <h2 class="font-display font-bold text-2xl text-white">PROJECT ARCHIVE</h2>
+            <!-- <p class="text-xs text-gray-500 mt-1">A curated collection of web apps, extensions, scripts, and utilities. -->
             </p>
-
-            <div class="flex flex-wrap justify-center gap-6 animate__animated animate__fadeInUp animate__delay-2s">
-                <a href="https://github.com/xue-yuan" target="_blank"
-                    class="text-3xl text-gray-400 hover:text-white hover:scale-110 transition-all duration-300"
-                    title="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/denon9527" target="_blank"
-                    class="text-3xl text-gray-400 hover:text-[#0077b5] hover:scale-110 transition-all duration-300"
-                    title="LinkedIn">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="https://blog.xueyuan.dev" target="_blank"
-                    class="text-3xl text-gray-400 hover:text-orange-400 hover:scale-110 transition-all duration-300"
-                    title="Blog">
-                    <i class="fa-solid fa-cube"></i>
-                </a>
-                <a href="https://open.spotify.com/user/uisuell" target="_blank"
-                    class="text-3xl text-gray-400 hover:text-[#1DB954] hover:scale-110 transition-all duration-300"
-                    title="Spotify">
-                    <i class="fa-brands fa-spotify"></i>
-                </a>
-                <a href="https://www.instagram.com/___xueyuan/" target="_blank"
-                    class="text-3xl text-gray-400 hover:text-[#E1306C] hover:scale-110 transition-all duration-300"
-                    title="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="mailto:ares@xueyuan.dev"
-                    class="text-3xl text-gray-400 hover:text-indigo-400 hover:scale-110 transition-all duration-300"
-                    title="Email">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
-            </div>
+          </div>
+          <!-- Categories Filtering Tab -->
+          <div class="flex flex-wrap gap-1 bg-black/40 p-1 border border-zinc-800 rounded-xl">
+            <button onclick="filterProjects('all')"
+              class="project-filter-btn px-4 py-1.5 rounded-lg text-xs font-semibold bg-accent-1 text-black font-display transition-all"
+              id="filter-all">
+              ALL
+            </button>
+            <button onclick="filterProjects('tech')"
+              class="project-filter-btn px-4 py-1.5 rounded-lg text-xs font-semibold text-gray-400 hover:text-white font-display transition-all"
+              id="filter-tech">
+              TECH
+            </button>
+            <button onclick="filterProjects('music')"
+              class="project-filter-btn px-4 py-1.5 rounded-lg text-xs font-semibold text-gray-400 hover:text-white font-display transition-all"
+              id="filter-music">
+              MUSIC
+            </button>
+            <button onclick="filterProjects('tools')"
+              class="project-filter-btn px-4 py-1.5 rounded-lg text-xs font-semibold text-gray-400 hover:text-white font-display transition-all"
+              id="filter-tools">
+              TOOLS
+            </button>
+          </div>
         </div>
 
-        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-500 cursor-pointer hover:text-white transition-colors duration-300"
-            onclick="document.getElementById('content').scrollIntoView({behavior: 'smooth'})">
-            <i class="fa-solid fa-chevron-down text-xl"></i>
-        </div>
+        <!-- Projects grid list (populated dynamically) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="projects-container"></div>
+      </div>
+
     </section>
 
-    <main id="content" class="container mx-auto px-4 py-20 min-h-screen relative z-10">
+  </main>
 
-        <div class="flex justify-center mb-16 animate__animated animate__fadeIn" id="tabs-container">
-            <div class="bg-white/5 p-1 rounded-xl inline-flex relative backdrop-blur-md">
-                <button
-                    class="custom-tab active px-8 py-2 rounded-lg text-sm md:text-base transition-colors duration-200"
-                    onclick="switchTab(this, 'projects')">
-                    Projects
-                </button>
-                <button
-                    class="custom-tab px-8 py-2 rounded-lg text-sm md:text-base text-gray-400 hover:text-gray-200 transition-colors duration-200"
-                    onclick="switchTab(this, 'music')">
-                    Music
-                </button>
-                <button
-                    class="custom-tab px-8 py-2 rounded-lg text-sm md:text-base text-gray-400 hover:text-gray-200 transition-colors duration-200"
-                    onclick="switchTab(this, 'archives')">
-                    Archives
-                </button>
-            </div>
-        </div>
+  <!-- Footer -->
+  <footer class="mt-16 text-center text-gray-600 text-xs font-mono">
+    <p>&copy; 2026 Ares</p>
+  </footer>
 
-        <div id="projects" class="animate__animated animate__fadeIn">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- Global Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5VV6WM91B9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-5VV6WM91B9');
+  </script>
 
-                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
-                            <i class="fa-solid fa-briefcase"></i>
-                        </div>
-                        <h3 class="font-bold text-xl group-hover:text-indigo-400 transition-colors">Okareer</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-                        AI Reports For Smarter Career Decisions. Get insights into your professional path.
-                    </p>
-                    <div class="flex justify-end">
-                        <a href="https://okareer.com" target="_blank"
-                            class="text-sm font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-2 transition-colors">
-                            Visit Website <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
+  <!-- Main Logic Script -->
+  <script>
+    // Trackers
+    let isPlaying = false;
+    let scWidget = null;
+    let visualizerAnimFrame = null;
+    let activeTheme = 'dev';
 
-                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
-                            <i class="fa-solid fa-music"></i>
-                        </div>
-                        <h3 class="font-bold text-xl group-hover:text-cyan-400 transition-colors">Lofi Radio</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-                        Your personal focus companion. Listen to curated Lofi beats to relax or code.
-                    </p>
-                    <div class="flex justify-end">
-                        <a href="https://lofi.tw" target="_blank"
-                            class="text-sm font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-2 transition-colors">
-                            Start Listening <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
+    // 0. Render Text Content Dynamically from data.js Configuration
+    function populatePortfolioDOM() {
+      const data = window.PORTFOLIO_DATA;
+      if (!data) {
+        console.error("PORTFOLIO_DATA not found. Please verify assets/data.js is loaded correctly.");
+        return;
+      }
 
-                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="w-12 h-12 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
-                            <i class="fa-solid fa-music"></i>
-                        </div>
-                        <h3 class="font-bold text-xl group-hover:text-red-400 transition-colors">Chronos</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-                        Plan and manage your time effectively.
-                    </p>
-                    <div class="flex justify-end">
-                        <a href="https://chronos.xueyuan.dev" target="_blank"
-                            class="text-sm font-semibold text-red-400 hover:text-red-300 flex items-center gap-2 transition-colors">
-                            Start Planning <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
+      // Profile info
+      document.getElementById('profile-name').innerText = data.profile.name;
+      document.getElementById('profile-title').innerText = data.profile.title;
+      document.getElementById('profile-bio').innerText = data.profile.bio;
+      document.getElementById('profile-quote').innerText = `"${data.profile.quote}"`;
 
-                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="w-12 h-12 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
-                            <i class="fa-solid fa-calculator"></i>
-                        </div>
-                        <h3 class="font-bold text-xl group-hover:text-green-400 transition-colors">Kirin</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-                        Simple yet powerful Compound Interest Calculator for financial planning.
-                    </p>
-                    <div class="flex justify-end">
-                        <a href="https://kirin.xueyuan.dev" target="_blank"
-                            class="text-sm font-semibold text-green-400 hover:text-green-300 flex items-center gap-2 transition-colors">
-                            Calculate <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
+      // Live status
+      document.getElementById('live-status').innerText = activeTheme === 'dev' ? data.profile.statusDev : data.profile.statusDj;
 
-                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="w-12 h-12 rounded-lg bg-gray-500/10 text-gray-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
-                            <i class="fa-solid fa-newspaper"></i>
-                        </div>
-                        <h3 class="font-bold text-xl group-hover:text-white transition-colors">Nude York Times</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-                        Browser extension to bypass paywalls and access news content freely.
-                    </p>
-                    <div class="flex justify-end">
-                        <a href="https://github.com/xue-yuan/nude-york-times" target="_blank"
-                            class="text-sm font-semibold text-gray-400 hover:text-white flex items-center gap-2 transition-colors">
-                            View Code <i class="fa-brands fa-github"></i>
-                        </a>
-                    </div>
-                </div>
+      // Social links
+      document.getElementById('link-email').href = `mailto:${data.profile.email}`;
+      document.getElementById('link-email').innerHTML = `<i class="fa-solid fa-envelope"></i> ${data.profile.email}`;
+      document.getElementById('link-github').href = data.profile.socials.github;
+      document.getElementById('link-linkedin').href = data.profile.socials.linkedin;
+      document.getElementById('link-blog').href = data.profile.socials.blog;
+      document.getElementById('link-spotify').href = data.profile.socials.spotify;
+      document.getElementById('link-instagram').href = data.profile.socials.instagram;
 
-                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="w-12 h-12 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
-                            <i class="fa-brands fa-telegram"></i>
-                        </div>
-                        <h3 class="font-bold text-xl group-hover:text-blue-400 transition-colors">Lingram</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-                        Utility to transfer stickers from LINE to Telegram seamlessly.
-                    </p>
-                    <div class="flex justify-end">
-                        <a href="https://github.com/xue-yuan/lingram" target="_blank"
-                            class="text-sm font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-2 transition-colors">
-                            View Code <i class="fa-brands fa-github"></i>
-                        </a>
-                    </div>
-                </div>
+      // Tech Stack
+      const devStackContainer = document.getElementById('stack-dev');
+      devStackContainer.innerHTML = data.techStack.map(tech => `
+                <span class="text-xs bg-zinc-900/80 border border-zinc-800 text-gray-300 py-1.5 px-3 rounded-xl font-mono flex items-center gap-1.5">
+                    <i class="${tech.icon}"></i> ${tech.name}
+                </span>
+            `).join('');
 
-                <div class="glass-panel p-6 rounded-2xl flex flex-col h-full group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="w-12 h-12 rounded-lg bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300">
-                            <i class="fa-brands fa-python"></i>
-                        </div>
-                        <h3 class="font-bold text-xl group-hover:text-yellow-400 transition-colors">Phorm</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-                        Automation script to fill Google Forms automatically.
-                    </p>
-                    <div class="flex justify-end">
-                        <a href="https://github.com/xue-yuan/phorm" target="_blank"
-                            class="text-sm font-semibold text-yellow-400 hover:text-yellow-300 flex items-center gap-2 transition-colors">
-                            View Code <i class="fa-brands fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+      // DJ Gears
+      const djGearsContainer = document.getElementById('stack-dj');
+      djGearsContainer.innerHTML = data.djGears.map(gear => `
+                <span class="text-xs bg-zinc-900/80 border border-zinc-800 text-gray-300 py-1.5 px-3 rounded-xl font-mono flex items-center gap-1.5">
+                    <i class="${gear.icon}"></i> ${gear.name}
+                </span>
+            `).join('');
 
-            <div class="text-center mt-12">
-                <a href="https://github.com/xue-yuan" target="_blank"
-                    class="inline-block px-6 py-3 rounded-full border border-gray-700 hover:border-indigo-500 text-gray-400 hover:text-white transition-all duration-300">
-                    See More on GitHub <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+      // Writings & Medium blog posts
+      const writingsContainer = document.getElementById('writings-list');
+      writingsContainer.innerHTML = data.writings.map(post => `
+                <a href="${post.url}" target="_blank" class="group flex items-center justify-between p-3 rounded-xl bg-black/40 hover:bg-zinc-800/30 border border-zinc-800/50 hover:border-accent-2 transition-all">
+                    <div class="flex flex-col">
+                        <span class="text-sm font-semibold text-white group-hover:text-accent-2 transition-colors">${post.title}</span>
+                        <span class="text-[10px] text-gray-500 mt-0.5">${post.subtitle}</span>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center text-gray-400 group-hover:bg-accent-2 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    </div>
                 </a>
-            </div>
-        </div>
+            `).join('');
 
-        <div id="music" class="hidden animate__animated animate__fadeIn">
-            <div class="max-w-3xl mx-auto glass-panel p-1 rounded-xl overflow-hidden">
-                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
-                    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ares-138069229/tech-house-and-bass-house-mix-vol-1&color=%234f46e5&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-                </iframe>
-            </div>
-        </div>
+      // Project Catalog
+      const projectsContainer = document.getElementById('projects-container');
+      projectsContainer.innerHTML = data.projects.map(proj => {
+        // Determine display label for link
+        const isGithub = proj.url.includes('github.com');
+        const linkLabel = isGithub ? 'View Code' : 'Visit Website';
+        const linkIcon = isGithub ? 'fa-brands fa-github' : 'fa-solid fa-arrow-right';
 
-        <div id="archives" class="hidden flex flex-col gap-4 max-w-4xl mx-auto animate__animated animate__fadeIn">
+        return `
+                    <div class="project-item bento-card p-5 flex flex-col justify-between h-56 group" data-category="${proj.category}">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center text-lg group-hover:scale-110 transition-transform ${proj.icon.split(' ')[1]} ${proj.icon.split(' ')[2]}">
+                                <i class="${proj.icon.split(' ')[0]}"></i>
+                            </div>
+                            <h4 class="font-display font-bold text-lg text-white group-hover:text-accent-1 transition-colors">${proj.name}</h4>
+                        </div>
+                        <p class="text-xs text-gray-400 leading-relaxed my-4 flex-grow">
+                            ${proj.description}
+                        </p>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="flex gap-1">
+                                ${proj.tags.map(tag => `<span class="text-[9px] font-mono bg-zinc-900 border border-zinc-800 text-zinc-500 px-2 py-0.5 rounded">${tag}</span>`).join('')}
+                            </div>
+                            <a href="${proj.url}" target="_blank" class="text-xs font-semibold text-accent-1 hover:text-white flex items-center gap-1.5">
+                                ${linkLabel} <i class="${linkIcon} text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+      }).join('');
 
-            <a href="https://medium.com/code-bar/self-signed-certificate-by-using-openssl-ec22a0257a28" target="_blank"
-                class="glass-panel p-6 rounded-xl flex items-center justify-between group cursor-pointer">
-                <div>
-                    <h2 class="text-lg font-semibold group-hover:text-indigo-400 transition-colors">利用 openSSL 自簽憑證</h2>
-                    <p class="text-sm text-gray-500 mt-1">Medium Article • Technical Guide</p>
-                </div>
-                <div
-                    class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-indigo-500 group-hover:text-white transition-all">
-                    <i class="fa-solid fa-arrow-right -rotate-45"></i>
-                </div>
-            </a>
+      // SoundCloud widget source
+      const iframe = document.getElementById('sc-widget');
+      if (iframe) {
+        iframe.src = `https://w.soundcloud.com/player/?url=${encodeURIComponent(data.soundcloudUrl)}&color=%236366f1&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false`;
+      }
+    }
 
+    // 1. Initialize Canvas Background Particles
+    function initQuantumCanvas() {
+      const canvas = document.getElementById('quantum-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
 
-        </div>
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
 
-    </main>
+      const particles = [];
+      const particleCount = 75;
+      let mouseX = -1000;
+      let mouseY = -1000;
 
-    <footer class="py-8 text-center text-gray-600 text-sm">
-        <p>&copy; 2025 Ares. All rights reserved.</p>
-    </footer>
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5VV6WM91B9"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-5VV6WM91B9');
-    </script>
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
 
-    <script>
-        function switchTab(element, tabName) {
-            const buttons = document.querySelectorAll('.custom-tab');
-            buttons.forEach(btn => {
-                btn.classList.remove('active', 'bg-indigo-600', 'text-white', 'shadow-lg');
-                btn.classList.add('text-gray-400', 'hover:text-gray-200');
+      window.addEventListener('mouseleave', () => {
+        mouseX = -1000;
+        mouseY = -1000;
+      });
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.size = Math.random() * 2 + 1.5;
+          this.baseSpeedX = (Math.random() - 0.5) * 0.4;
+          this.baseSpeedY = (Math.random() - 0.5) * 0.4;
+          this.speedX = this.baseSpeedX;
+          this.speedY = this.baseSpeedY;
+          this.opacity = Math.random() * 0.5 + 0.3;
+          this.angle = Math.random() * Math.PI * 2;
+          this.angleSpeed = Math.random() * 0.02 - 0.01;
+        }
+
+        update() {
+          this.angle += this.angleSpeed;
+
+          this.speedX = this.baseSpeedX + Math.sin(this.angle) * 0.05;
+          this.speedY = this.baseSpeedY + Math.cos(this.angle) * 0.05;
+
+          this.x += this.speedX;
+          this.y += this.speedY;
+
+          if (mouseX !== -1000 && mouseY !== -1000) {
+            const dx = this.x - mouseX;
+            const dy = this.y - mouseY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 140) {
+              const force = (140 - dist) / 140;
+              const forceX = (dx / dist) * force * 1.5;
+              const forceY = (dy / dist) * force * 1.5;
+              this.x += forceX;
+              this.y += forceY;
+            }
+          }
+
+          if (this.x < 0) this.x = width;
+          if (this.x > width) this.x = 0;
+          if (this.y < 0) this.y = height;
+          if (this.y > height) this.y = 0;
+        }
+
+        draw() {
+          ctx.save();
+          ctx.globalAlpha = this.opacity;
+
+          if (activeTheme === 'dev') {
+            ctx.fillStyle = this.size > 2.5 ? '#06b6d4' : '#6366f1';
+          } else {
+            ctx.fillStyle = this.size > 2.5 ? '#ccff00' : '#f43f5e';
+          }
+
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = ctx.fillStyle;
+
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      function loop() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(loop);
+      }
+      loop();
+    }
+
+    // 2. Bento Panel Cursor Spotlight Glow
+    function initSpotlightGlow() {
+      const container = document.body;
+      // Use delegation to bind to dynamically rendered cards
+      container.addEventListener('mousemove', (e) => {
+        const card = e.target.closest('.bento-card');
+        if (card) {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+        }
+      });
+    }
+
+    // 3. Web Audio Synth setup
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playSynthSound(freq, type, duration, dec) {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      const filter = audioCtx.createBiquadFilter();
+
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+      if (type === 'sawtooth') {
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(1000, audioCtx.currentTime);
+        filter.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + duration);
+        osc.connect(filter);
+        filter.connect(gain);
+      } else {
+        osc.connect(gain);
+      }
+
+      gain.connect(audioCtx.destination);
+
+      gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playNoise(highpass, duration, gainVal) {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      const bufferSize = audioCtx.sampleRate * duration;
+      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+
+      const source = audioCtx.createBufferSource();
+      source.buffer = buffer;
+
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'highpass';
+      filter.frequency.setValueAtTime(highpass, audioCtx.currentTime);
+
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+      source.connect(filter);
+      filter.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      source.start();
+      source.stop(audioCtx.currentTime + duration);
+    }
+
+    function triggerPad(type) {
+      const pad = document.getElementById(`pad-${type}`);
+      if (pad) {
+        const classes = activeTheme === 'dev' ? ['bg-cyan-500/20', 'border-cyan-500'] : ['bg-accent-1/20', 'border-accent-1'];
+        pad.classList.add(...classes);
+        setTimeout(() => {
+          pad.classList.remove(...classes);
+        }, 180);
+      }
+
+      if (type === 'kick') {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+        gain.gain.setValueAtTime(0.7, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.25);
+      } else if (type === 'snare') {
+        playNoise(800, 0.2, 0.6);
+      } else if (type === 'hihat') {
+        playNoise(8000, 0.06, 0.35);
+      } else if (type === 'synth') {
+        const notes = [261.63, 293.66, 329.63, 392.00, 440.00];
+        const note = notes[Math.floor(Math.random() * notes.length)];
+        playSynthSound(note, 'sawtooth', 0.3);
+      }
+    }
+
+    // 4. Custom SoundCloud Platter Turntable Control
+    function initSoundCloudWidget() {
+      const iframe = document.getElementById('sc-widget');
+      if (!iframe) return;
+
+      scWidget = SC.Widget(iframe);
+
+      scWidget.bind(SC.Widget.Events.READY, () => {
+        console.log("SoundCloud Widget ready.");
+      });
+
+      scWidget.bind(SC.Widget.Events.PLAY, () => {
+        isPlaying = true;
+        setTurntableState(true);
+        startVisualizerAnimation();
+      });
+
+      scWidget.bind(SC.Widget.Events.PAUSE, () => {
+        isPlaying = false;
+        setTurntableState(false);
+        stopVisualizerAnimation();
+      });
+
+      scWidget.bind(SC.Widget.Events.FINISH, () => {
+        isPlaying = false;
+        setTurntableState(false);
+        stopVisualizerAnimation();
+      });
+    }
+
+    function togglePlayMix() {
+      if (!scWidget) return;
+      scWidget.toggle();
+    }
+
+    function setTurntableState(spinning) {
+      const vinyl = document.getElementById('vinyl-record');
+      const arm = document.getElementById('tonearm');
+      const btn = document.getElementById('btn-play-mix');
+
+      if (spinning) {
+        vinyl.classList.add('animate-[spin_4s_linear_infinite]');
+        arm.style.transform = 'rotate(10deg)';
+        btn.innerHTML = '<i class="fa-solid fa-pause"></i> PAUSE MIX';
+        btn.classList.add('border-accent-2', 'bg-accent-2/10');
+      } else {
+        vinyl.classList.remove('animate-[spin_4s_linear_infinite]');
+        arm.style.transform = 'rotate(-22deg)';
+        btn.innerHTML = '<i class="fa-solid fa-play"></i> START PLAYBACK';
+        btn.classList.remove('border-accent-2', 'bg-accent-2/10');
+      }
+    }
+
+    function startVisualizerAnimation() {
+      if (visualizerAnimFrame) cancelAnimationFrame(visualizerAnimFrame);
+      const bars = document.querySelectorAll('.eq-bar');
+
+      function animate() {
+        bars.forEach(bar => {
+          const h = Math.random() * 0.95 + 0.05;
+          bar.style.transform = `scaleY(${h})`;
+        });
+        visualizerAnimFrame = requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    function stopVisualizerAnimation() {
+      if (visualizerAnimFrame) cancelAnimationFrame(visualizerAnimFrame);
+      const bars = document.querySelectorAll('.eq-bar');
+      bars.forEach(bar => {
+        bar.style.transform = 'scaleY(0.15)';
+      });
+    }
+
+    // 5. DEV <-> DJ Theme Controller
+    function setThemeState(theme) {
+      if (theme === activeTheme) return;
+
+      const changeTheme = () => {
+        activeTheme = theme;
+        document.documentElement.setAttribute('data-theme', theme);
+
+        const data = window.PORTFOLIO_DATA;
+        const liveStatus = document.getElementById('live-status');
+        const title = document.getElementById('stack-card-title');
+        const btnToggle = document.getElementById('btn-toggle-stack');
+        const stackDev = document.getElementById('stack-dev');
+        const stackDj = document.getElementById('stack-dj');
+        const devBtn = document.getElementById('btn-theme-dev');
+        const djBtn = document.getElementById('btn-theme-dj');
+
+        if (theme === 'dev') {
+          if (data) liveStatus.innerText = data.profile.statusDev;
+          liveStatus.parentElement.className = 'inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-500 mb-3';
+
+          devBtn.className = 'flex items-center justify-center gap-2 py-2 px-4 rounded-lg font-display text-sm font-semibold transition-all duration-300 bg-indigo-600 text-white shadow-lg shadow-indigo-600/20';
+          djBtn.className = 'flex items-center justify-center gap-2 py-2 px-4 rounded-lg font-display text-sm font-semibold transition-all duration-300 text-gray-400 hover:text-white';
+
+          title.innerText = 'TECH STACK';
+          btnToggle.innerText = 'SWITCH TO GEARS';
+          stackDev.classList.remove('hidden');
+          stackDj.classList.add('hidden');
+        } else {
+          if (data) liveStatus.innerText = data.profile.statusDj;
+          liveStatus.parentElement.className = 'inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ccff00]/10 border border-[#ccff00]/20 text-xs font-mono text-[#ccff00] mb-3';
+
+          djBtn.className = 'flex items-center justify-center gap-2 py-2 px-4 rounded-lg font-display text-sm font-semibold transition-all duration-300 bg-[#ccff00] text-black shadow-lg shadow-[#ccff00]/20';
+          devBtn.className = 'flex items-center justify-center gap-2 py-2 px-4 rounded-lg font-display text-sm font-semibold transition-all duration-300 text-gray-400 hover:text-white';
+
+          title.innerText = 'DJ GEARS & GENRES';
+          btnToggle.innerText = 'SWITCH TO TECHS';
+          stackDev.classList.add('hidden');
+          stackDj.classList.remove('hidden');
+        }
+      };
+
+      if (document.startViewTransition) {
+        document.startViewTransition(changeTheme);
+      } else {
+        changeTheme();
+      }
+    }
+
+    // Toggle stacks sub-switcher button
+    function toggleStackView() {
+      const btn = document.getElementById('btn-toggle-stack');
+      const title = document.getElementById('stack-card-title');
+      const stackDev = document.getElementById('stack-dev');
+      const stackDj = document.getElementById('stack-dj');
+
+      if (stackDev.classList.contains('hidden')) {
+        title.innerText = 'TECH STACK';
+        btn.innerText = 'SWITCH TO GEARS';
+        stackDev.classList.remove('hidden');
+        stackDj.classList.add('hidden');
+      } else {
+        title.innerText = 'DJ GEARS & GENRES';
+        btn.innerText = 'SWITCH TO TECHS';
+        stackDev.classList.add('hidden');
+        stackDj.classList.remove('hidden');
+      }
+    }
+
+    // 6. Project filter logic
+    function filterProjects(category) {
+      const btns = document.querySelectorAll('.project-filter-btn');
+      btns.forEach(btn => {
+        btn.classList.remove('bg-accent-1', 'text-black', 'bg-indigo-600', 'bg-[#ccff00]');
+        btn.classList.add('text-gray-400', 'hover:text-white');
+      });
+
+      const activeBtn = document.getElementById(`filter-${category}`);
+      activeBtn.classList.remove('text-gray-400', 'hover:text-white');
+
+      if (activeTheme === 'dev') {
+        activeBtn.classList.add('bg-indigo-600', 'text-white');
+      } else {
+        activeBtn.classList.add('bg-[#ccff00]', 'text-black');
+      }
+
+      const items = document.querySelectorAll('.project-item');
+      const changeVisibility = () => {
+        items.forEach(item => {
+          if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      };
+
+      if (document.startViewTransition) {
+        document.startViewTransition(changeVisibility);
+      } else {
+        changeVisibility();
+      }
+    }
+
+    // 7. Embedded Terminal execution interpreter
+    const terminalInput = document.getElementById('terminal-input');
+    const terminalOutput = document.getElementById('terminal-output');
+
+    terminalInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const command = terminalInput.value.trim();
+        processTerminalCommand(command);
+        terminalInput.value = '';
+      }
+    });
+
+    document.getElementById('terminal-card').addEventListener('click', () => {
+      terminalInput.focus();
+    });
+
+    function processTerminalCommand(cmd) {
+      writeToTerminal(`ares@system:~$ ${cmd}`);
+
+      const parts = cmd.split(' ');
+      const mainCmd = parts[0].toLowerCase();
+      const data = window.PORTFOLIO_DATA;
+
+      switch (mainCmd) {
+        case 'help':
+          writeToTerminal('Available commands:');
+          writeToTerminal('  help:       Display this console instruction guide.');
+          writeToTerminal('  whoami:     Show info about Ares.');
+          writeToTerminal('  skills:     List software development and DJ skillset.');
+          writeToTerminal('  projects:   Print out personal repository catalog.');
+          writeToTerminal('  matrix:     Trigger full screen digital waterfall sequence.');
+          writeToTerminal('  mode:       Toggle between dev and dj workspace mode.');
+          writeToTerminal('  party:      Fire trigger event for surprise celebration.');
+          writeToTerminal('  clear:      Clear output interface log.');
+          break;
+        case 'whoami':
+          writeToTerminal('Ares');
+          break;
+        case 'skills':
+          if (data) {
+            writeToTerminal('Developer Core Stack:');
+            data.techStack.forEach(t => writeToTerminal(`  - ${t.name}`));
+            writeToTerminal('DJ Gears & Genres:');
+            data.djGears.forEach(g => writeToTerminal(`  - ${g.name}`));
+          }
+          break;
+        case 'projects':
+          if (data) {
+            writeToTerminal('Ares Portfolio Repositories:');
+            data.projects.forEach(p => writeToTerminal(`  - ${p.name}: ${p.description}`));
+          }
+          break;
+        case 'matrix':
+          writeToTerminal('System breach detected... Starting Matrix Stream. Click to Exit.');
+          setTimeout(startMatrixRain, 800);
+          break;
+        case 'mode':
+          const newTheme = activeTheme === 'dev' ? 'dj' : 'dev';
+          setThemeState(newTheme);
+          writeToTerminal(`System workspace switched to: ${newTheme.toUpperCase()}_MODE`);
+          break;
+        case 'party':
+          writeToTerminal('Triggering Party confetti...');
+          triggerConfettiParty();
+          break;
+        case 'clear':
+          terminalOutput.innerHTML = '';
+          break;
+        case '':
+          break;
+        default:
+          writeToTerminal(`Error: Command not found: ${mainCmd}. Type 'help' for instructions.`);
+      }
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+
+    function writeToTerminal(text) {
+      const div = document.createElement('div');
+      div.className = 'mt-1 text-[11px]';
+      div.textContent = text;
+      terminalOutput.appendChild(div);
+    }
+
+    // Matrix falling rain animation
+    let matrixInterval = null;
+    function startMatrixRain() {
+      const canvas = document.getElementById('matrix-canvas');
+      if (!canvas) return;
+      canvas.classList.remove('hidden');
+
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.parentElement.offsetWidth;
+      canvas.height = canvas.parentElement.offsetHeight;
+
+      const columns = Math.floor(canvas.width / 13);
+      const rainDrops = Array(columns).fill(1);
+
+      function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = activeTheme === 'dev' ? '#06b6d4' : '#ccff00';
+        ctx.font = '12px monospace';
+
+        for (let i = 0; i < rainDrops.length; i++) {
+          const text = String.fromCharCode(Math.floor(Math.random() * 93) + 33);
+          const x = i * 13;
+          const y = rainDrops[i] * 12;
+
+          ctx.fillText(text, x, y);
+
+          if (y > canvas.height && Math.random() > 0.975) {
+            rainDrops[i] = 0;
+          }
+          rainDrops[i]++;
+        }
+      }
+
+      canvas.addEventListener('click', stopMatrixRain, { once: true });
+
+      matrixInterval = setInterval(draw, 35);
+    }
+
+    function stopMatrixRain() {
+      clearInterval(matrixInterval);
+      const canvas = document.getElementById('matrix-canvas');
+      if (canvas) canvas.classList.add('hidden');
+      writeToTerminal('Matrix stream disconnected.');
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const canvas = document.getElementById('matrix-canvas');
+        if (canvas && !canvas.classList.contains('hidden')) {
+          stopMatrixRain();
+        }
+      }
+    });
+
+    // 8. Sticky header scroll tracking and progress bar
+    function initScrollTracking() {
+      const progress = document.getElementById('scroll-progress');
+      const header = document.getElementById('floating-header');
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPct = (scrollTop / docHeight) * 100;
+
+        if (progress) progress.style.width = `${scrollPct}%`;
+
+        if (header) {
+          if (scrollTop > 180) {
+            header.classList.remove('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+            header.classList.add('opacity-1', 'translate-y-0', 'pointer-events-auto');
+          } else {
+            header.classList.add('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+            header.classList.remove('opacity-1', 'translate-y-0', 'pointer-events-auto');
+          }
+        }
+      });
+    }
+
+    function scrollToCard(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    // 9. Keyboard drum keypress trigger bindings
+    document.addEventListener('keydown', (e) => {
+      if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
+        return;
+      }
+      if (e.key === '1') triggerPad('kick');
+      if (e.key === '2') triggerPad('snare');
+      if (e.key === '3') triggerPad('hihat');
+      if (e.key === '4') triggerPad('synth');
+    });
+
+    // 10. Konami Cheat Code surprise easter egg
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiIndex = 0;
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+          triggerConfettiParty();
+          konamiIndex = 0;
+        }
+      } else {
+        konamiIndex = 0;
+      }
+    });
+
+    function triggerConfettiParty() {
+      var duration = 4 * 1000;
+      var animationEnd = Date.now() + duration;
+      var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+      function random(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      var interval = setInterval(function () {
+        var timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        var particleCount = 50 * (timeLeft / duration);
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } }));
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } }));
+      }, 250);
+    }
+
+    // 11. Initializer execution
+    window.addEventListener('DOMContentLoaded', () => {
+      populatePortfolioDOM();
+      initQuantumCanvas();
+      initSpotlightGlow();
+      initSoundCloudWidget();
+      initScrollTracking();
+
+      // Native CSS Scroll-driven animations fallback
+      if (!CSS.supports('animation-timeline', 'view()')) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-active');
+                observer.unobserve(entry.target);
+              }
             });
-
-            element.classList.remove('text-gray-400', 'hover:text-gray-200');
-            element.classList.add('active', 'bg-indigo-600', 'text-white', 'shadow-lg');
-
-            const sections = ['projects', 'music', 'archives'];
-            sections.forEach(section => {
-                const el = document.getElementById(section);
-                if (section === tabName) {
-                    el.classList.remove('hidden');
-                    el.classList.add('animate__fadeIn');
-                } else {
-                    el.classList.add('hidden');
-                    el.classList.remove('animate__fadeIn');
-                }
-            });
-        }
-
-        document.querySelector('.custom-tab.active')?.classList.add('bg-indigo-600', 'text-white', 'shadow-lg');
-
-        function initQuantumField() {
-            const container = document.getElementById('quantum-field');
-            const particleCount = 80;
-
-            for (let i = 0; i < particleCount; i++) {
-                createParticle(container);
-            }
-        }
-
-        function createParticle(container) {
-            const particle = document.createElement('div');
-            particle.classList.add('quantum-particle');
-
-            const size = Math.random() * 3 + 2;
-            const x = Math.random() * 100;
-            const y = Math.random() * 100;
-            const delay = Math.random() * 5;
-            const duration = Math.random() * 3 + 3;
-            const maxOpacity = Math.random() * 0.5 + 0.3;
-            const moveX = (Math.random() - 0.5) * 20 + 'px';
-            const moveY = (Math.random() - 0.5) * 20 + 'px';
-
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${x}%`;
-            particle.style.top = `${y}%`;
-            particle.style.animationDelay = `${delay}s`;
-            particle.style.animationDuration = `${duration}s`;
-            particle.style.setProperty('--max-opacity', maxOpacity);
-            particle.style.setProperty('--move-x', moveX);
-            particle.style.setProperty('--move-y', moveY);
-
-            const colors = ['#ffffff', '#a5f3fc', '#e9d5ff'];
-            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-
-            container.appendChild(particle);
-        }
-
-        initQuantumField();
-
-        const terminalOverlay = document.getElementById('terminal-overlay');
-        const terminalInput = document.getElementById('terminal-input');
-        const terminalOutput = document.getElementById('terminal-output');
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === '`') {
-                e.preventDefault();
-                terminalOverlay.classList.toggle('open');
-                if (terminalOverlay.classList.contains('open')) {
-                    terminalInput.focus();
-                }
-            }
+          },
+          { threshold: 0.08 }
+        );
+        document.querySelectorAll('.reveal-item').forEach(el => {
+          el.classList.add('reveal-fallback');
+          observer.observe(el);
         });
-
-        terminalInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const command = terminalInput.value.trim();
-                processCommand(command);
-                terminalInput.value = '';
-            }
-        });
-
-        function processCommand(cmd) {
-            writeToTerminal(`ares@system:~$ ${cmd}`);
-
-            const parts = cmd.split(' ');
-            const mainCmd = parts[0].toLowerCase();
-
-            switch (mainCmd) {
-                case 'help':
-                    writeToTerminal('Available commands: help, whoami, ls, date, clear, exit');
-                    break;
-                case 'whoami':
-                    writeToTerminal('Ares');
-                    break;
-                case 'ls':
-                    writeToTerminal('nice_try_diddy.txt');
-                    break;
-                case 'date':
-                    writeToTerminal(new Date().toString());
-                    break;
-                case 'clear':
-                    terminalOutput.innerHTML = '';
-                    break;
-                case 'exit':
-                    terminalOverlay.classList.remove('open');
-                    break;
-                // case 'music':
-                //     writeToTerminal('Playing a random track from the archives...');
-                //     window.open('https://soundcloud.com/ares-138069229', '_blank');
-                //     break;
-                case 'sudo':
-                    writeToTerminal('What do you want sudo for?');
-                    break;
-                case '':
-                    break;
-                default:
-                    writeToTerminal(`Command not found: ${mainCmd}`);
-            }
-            terminalOverlay.scrollTop = terminalOverlay.scrollHeight;
-        }
-
-        function writeToTerminal(text) {
-            const div = document.createElement('div');
-            div.className = 'terminal-line';
-            div.textContent = text;
-            terminalOutput.appendChild(div);
-        }
-
-
-
-        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-        let konamiIndex = 0;
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === konamiCode[konamiIndex]) {
-                konamiIndex++;
-                if (konamiIndex === konamiCode.length) {
-                    triggerSurprise();
-                    konamiIndex = 0;
-                }
-            } else {
-                konamiIndex = 0;
-            }
-        });
-
-        function triggerSurprise() {
-            const container = document.createElement('div');
-            container.className = 'fixed bottom-10 left-0 right-0 flex justify-center z-[100] pointer-events-none';
-
-            const toast = document.createElement('div');
-            toast.className = 'bg-indigo-600 text-white px-6 py-3 rounded-full shadow-2xl animate__animated animate__bounceInUp font-bold pointer-events-auto';
-            toast.innerText = '🚀 Cheat Code Activated! Party Time! 🎉';
-
-            container.appendChild(toast);
-            document.body.appendChild(container);
-
-            setTimeout(() => {
-                toast.classList.remove('animate__bounceInUp');
-                toast.classList.add('animate__fadeOutDown');
-                setTimeout(() => container.remove(), 1000);
-            }, 3000);
-
-            var duration = 3 * 1000;
-            var animationEnd = Date.now() + duration;
-            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 100 };
-
-            function random(min, max) {
-                return Math.random() * (max - min) + min;
-            }
-
-            var interval = setInterval(function () {
-                var timeLeft = animationEnd - Date.now();
-
-                if (timeLeft <= 0) {
-                    return clearInterval(interval);
-                }
-
-                var particleCount = 50 * (timeLeft / duration);
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } }));
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } }));
-            }, 250);
-        }
-    </script>
+      }
+    });
+  </script>
 </body>
+
 </html>

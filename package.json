@@ -1,0 +1,13 @@
+{
+  "name": "ares-portfolio",
+  "version": "2.0.0",
+  "description": "Ares Personal Portfolio Website Redesign",
+  "main": "index.html",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./assets/style.css --minify",
+    "watch": "tailwindcss -i ./src/input.css -o ./assets/style.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

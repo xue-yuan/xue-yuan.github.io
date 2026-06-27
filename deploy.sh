@@ -1,12 +1,11 @@
 #! /bin/bash
 
-yarn build
-cp CNAME ./build
-
 git add .
 git commit -m "Update: $(date)"
 git push
 
+pnpm build
+cp CNAME ./build
 cd build/
 git init
 git add .
