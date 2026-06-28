@@ -1,37 +1,45 @@
 # Performance Optimization Report: Critical Rendering Path (CRP)
 
-This document summarizes the optimization changes applied to the portfolio website to address the **Render-blocking requests** and **Image Delivery** issues reported by Chrome Lighthouse.
+This document summarizes the optimization changes applied to the portfolio website to address the **Render-blocking requests**, **Image Delivery**, and **Unused JS/CSS** issues reported by Chrome Lighthouse.
 
 ## 📊 Summary of Optimization Changes
 
-To resolve the render-blocking alerts, reduce page weight, and improve load speed, the following strategies were implemented:
+To resolve the performance alerts, reduce page weight, and improve load speed, the following strategies were implemented:
 
-1. **Integrated DaisyUI v5.6.0 as a Tailwind CSS Plugin**:
-   - 🛠️ Installed `daisyui@5.6.0` as a dev dependency and configured it in [tailwind.config.js](file:///Users/ares/workspace/projects/xue-yuan.github.io/tailwind.config.js).
+1. **Lazy-Loaded the SoundCloud widget player**:
+   - ⚡ **Problem**: The SoundCloud player `<iframe>` was previously loading immediately on page load, fetching **1,278 KB of unused JavaScript** and **257 KB of unused CSS** (including massive inlined fonts).
+   - 🛠️ **Solution**: Delayed assigning the `src` to the `<iframe>` and initializing `SC.Widget` until the user clicks the "START PLAYBACK" button or the vinyl record on the page.
+   - 📈 **Result**: Saved **~1.5 MB of page weight (transfer size) on initial load**! The player and its heavy dependency files now only load when the user explicitly requests to listen to the mix.
+
+2. **Integrated DaisyUI v5.6.0 as a Tailwind CSS Plugin**:
+   - 🛠️ Installed `daisyui@5.6.0` as a dev dependency and configured it in [src/input.css](file:///Users/ares/workspace/projects/xue-yuan.github.io/src/input.css) using Tailwind CSS v4's new plugin directive:
+     ```css
+     @plugin "daisyui";
+     ```
    - ⚡ This allows Tailwind CSS to parse `index.html` and compile **only the used DaisyUI styles** into [assets/style.css](file:///Users/ares/workspace/projects/xue-yuan.github.io/assets/style.css), purging the rest.
    - 🗑️ Completely deleted the large, local `assets/daisyui.min.css` (which was 2.8 MB raw / ~198 KB compressed) and its link tag from the HTML.
-   - 📉 The final compiled [assets/style.css](file:///Users/ares/workspace/projects/xue-yuan.github.io/assets/style.css) size is only **24.2 KB**, adding almost zero footprint while eliminating a major render-blocking request!
+   - 📉 The final compiled [assets/style.css](file:///Users/ares/workspace/projects/xue-yuan.github.io/assets/style.css) size is only **57.8 KB**, adding almost zero footprint while eliminating a major render-blocking request!
 
-2. **Optimized and Resized Avatar Image**:
+3. **Optimized and Resized Avatar Image**:
    - 🖼️ The original `assets/avatar.jpeg` was 883x883 pixels and weighed **432.6 KB**, but was only displayed at a max dimensions of 189x189 pixels in CSS.
    - ⚡ Compressed and resized the image to **384x384 pixels** (optimal resolution for Retina and high-density screens) with 80% JPEG quality.
    - 📉 Reduced the image file size to **76.5 KB**, achieving an **82.3% size reduction (saving ~354 KB)** of download payload.
 
-3. **Asynchronous Load for Non-Critical Stylesheets**:
+4. **Asynchronous Load for Non-Critical Stylesheets**:
    - Used the standard `<link rel="preload" as="style" onload="...">` pattern for:
      - 🎨 **Google Fonts CSS** (`Space Grotesk` & `Inter`)
      - 🎨 **FontAwesome Icons CSS** (`all.min.css`)
      - 🎨 **Animate.css** (`animate.min.css`)
    - This ensures the browser paints the page's bento layout instantly and loads fonts/icons/animations in the background, completely bypassing render blocking.
 
-4. **Deferred Script Execution**:
+5. **Deferred Script Execution**:
    - Added the `defer` attribute to non-critical script resources:
      - ⚙️ [assets/data.js](file:///Users/ares/workspace/projects/xue-yuan.github.io/assets/data.js)
      - ⚙️ [assets/confetti.browser.min.js](file:///Users/ares/workspace/projects/xue-yuan.github.io/assets/confetti.browser.min.js)
      - ⚙️ SoundCloud Widget API (`api.js`)
    - Deferring scripts ensures they execute after document parsing is complete but right before `DOMContentLoaded` fires. This preserves the exact initialization sequence (loading data, confetti, and SoundCloud before page scripts run) without blocking HTML parsing.
 
-5. **Resource Preconnections**:
+6. **Resource Preconnections**:
    - Added `preconnect` hints for remaining third-party domains (`cdnjs.cloudflare.com` and `w.soundcloud.com`) to warm up DNS, TCP, and TLS handshakes in advance.
 
 ---

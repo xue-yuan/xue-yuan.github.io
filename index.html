@@ -532,11 +532,6 @@
                 `;
       }).join('');
 
-      // SoundCloud widget source
-      const iframe = document.getElementById('sc-widget');
-      if (iframe) {
-        iframe.src = `https://w.soundcloud.com/player/?url=${encodeURIComponent(data.soundcloudUrl)}&color=%236366f1&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false`;
-      }
     }
 
     // 1. Initialize Canvas Background Particles
@@ -755,39 +750,52 @@
       }
     }
 
-    // 4. Custom SoundCloud Platter Turntable Control
-    function initSoundCloudWidget() {
+    // 4. Custom SoundCloud Platter Turntable Control (Lazy Loaded)
+    let scLoaded = false;
+    function togglePlayMix() {
       const iframe = document.getElementById('sc-widget');
       if (!iframe) return;
 
-      scWidget = SC.Widget(iframe);
+      if (!scLoaded) {
+        const btn = document.getElementById('btn-play-mix');
+        if (btn) {
+          btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> LOADING MIX...';
+        }
 
-      scWidget.bind(SC.Widget.Events.READY, () => {
-        console.log("SoundCloud Widget ready.");
-      });
+        const data = window.PORTFOLIO_DATA;
+        iframe.src = `https://w.soundcloud.com/player/?url=${encodeURIComponent(data.soundcloudUrl)}&color=%236366f1&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false`;
 
-      scWidget.bind(SC.Widget.Events.PLAY, () => {
-        isPlaying = true;
-        setTurntableState(true);
-        startVisualizerAnimation();
-      });
+        scWidget = SC.Widget(iframe);
 
-      scWidget.bind(SC.Widget.Events.PAUSE, () => {
-        isPlaying = false;
-        setTurntableState(false);
-        stopVisualizerAnimation();
-      });
+        scWidget.bind(SC.Widget.Events.READY, () => {
+          console.log("SoundCloud Widget ready.");
+          scLoaded = true;
+        });
 
-      scWidget.bind(SC.Widget.Events.FINISH, () => {
-        isPlaying = false;
-        setTurntableState(false);
-        stopVisualizerAnimation();
-      });
-    }
+        scWidget.bind(SC.Widget.Events.PLAY, () => {
+          isPlaying = true;
+          setTurntableState(true);
+          startVisualizerAnimation();
+        });
 
-    function togglePlayMix() {
-      if (!scWidget) return;
-      scWidget.toggle();
+        scWidget.bind(SC.Widget.Events.PAUSE, () => {
+          isPlaying = false;
+          setTurntableState(false);
+          stopVisualizerAnimation();
+        });
+
+        scWidget.bind(SC.Widget.Events.FINISH, () => {
+          isPlaying = false;
+          setTurntableState(false);
+          stopVisualizerAnimation();
+        });
+
+        return;
+      }
+
+      if (scWidget) {
+        scWidget.toggle();
+      }
     }
 
     function setTurntableState(spinning) {
@@ -1089,10 +1097,10 @@
         if (header) {
           if (scrollTop > 180) {
             header.classList.remove('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
-            header.classList.add('opacity-1', 'translate-y-0', 'pointer-events-auto');
+            header.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
           } else {
             header.classList.add('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
-            header.classList.remove('opacity-1', 'translate-y-0', 'pointer-events-auto');
+            header.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
           }
         }
       });
@@ -1159,7 +1167,6 @@
       populatePortfolioDOM();
       initQuantumCanvas();
       initSpotlightGlow();
-      initSoundCloudWidget();
       initScrollTracking();
 
       // Native CSS Scroll-driven animations fallback
