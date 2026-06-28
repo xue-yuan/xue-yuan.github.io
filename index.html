@@ -21,25 +21,33 @@
   <meta property="twitter:description" content="Software Engineer & DJ. Mixing code & tracks.">
   <meta property="twitter:image" content="https://xue-yuan.github.io/assets/og_image.png">
 
-  <!-- Fonts -->
+  <!-- Resource Preconnections -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
 
-  <!-- Text Content Data Configuration Source -->
-  <script src="./assets/data.js"></script>
+  <!-- Web Fonts (Asynchronous Load) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+  </noscript>
 
-  <!-- Tailwind & DaisyUI -->
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <!-- Localized Tailwind & DaisyUI (Critical Styles) -->
+  <link href="./assets/daisyui.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="./assets/style.css">
 
-  <!-- FontAwesome & Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <!-- Non-Critical UI Libraries (Asynchronous Load) -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></noscript>
+
+  <!-- Non-blocking JavaScript Dependencies -->
+  <script src="./assets/data.js" defer></script>
+  <script src="./assets/confetti.browser.min.js" defer></script>
+  <script src="https://w.soundcloud.com/player/api.js" defer></script>
 </head>
 
 <body class="min-h-screen relative pb-16">
@@ -51,18 +59,18 @@
   <header id="floating-header"
     class="fixed top-4 left-1/2 transform -translate-x-1/2 w-[90%] max-w-4xl z-50 transition-all duration-500 opacity-0 translate-y-[-20px] pointer-events-none">
     <div
-      class="bg-black/60 border border-zinc-800/80 backdrop-blur-xl rounded-2xl py-3 px-6 flex items-center justify-between shadow-2xl">
-      <a href="#" class="font-display font-bold text-lg tracking-wider text-white">ARES<span
+      class="bg-black/60 border border-zinc-800/80 backdrop-blur-xl rounded-2xl py-3 px-6 flex items-center justify-between gap-4 shadow-2xl">
+      <a href="#" class="font-display font-bold text-lg tracking-wider text-white flex-shrink-0">ARES<span
           class="text-accent-1">.DEV</span></a>
-      <nav class="flex items-center gap-6 text-sm font-medium">
+      <nav class="flex items-center gap-6 text-sm font-medium overflow-x-auto whitespace-nowrap no-scrollbar py-1">
         <button onclick="scrollToCard('profile-card')"
-          class="text-gray-400 hover:text-white transition-colors">About</button>
+          class="text-gray-400 hover:text-white transition-colors flex-shrink-0">About</button>
         <button onclick="scrollToCard('console-card')"
-          class="text-gray-400 hover:text-white transition-colors">Turntable</button>
+          class="text-gray-400 hover:text-white transition-colors flex-shrink-0">Turntable</button>
         <button onclick="scrollToCard('projects-card')"
-          class="text-gray-400 hover:text-white transition-colors">Projects</button>
+          class="text-gray-400 hover:text-white transition-colors flex-shrink-0">Projects</button>
         <button onclick="scrollToCard('archives-card')"
-          class="text-gray-400 hover:text-white transition-colors">Archives</button>
+          class="text-gray-400 hover:text-white transition-colors flex-shrink-0">Archives</button>
       </nav>
     </div>
   </header>

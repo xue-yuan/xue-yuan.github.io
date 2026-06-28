@@ -134,6 +134,14 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--color-accent-1);
 }
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
 
 /* Fallback for browsers not supporting scroll-driven animations */
 .reveal-fallback {
